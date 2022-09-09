@@ -17,7 +17,7 @@ public class LoginController {
     SceneLoader sceneLoader = new SceneLoader();
 
     public void loginButton(ActionEvent e) throws IOException {
-        LoginService ls = new LoginService(usernameTextField.getText(),pinTextField.getText());
+        LoginService ls = new LoginService(usernameTextField.getText(),pinTextField.getText(), loginLabel,usernameTextField,pinTextField);
         Hashing has = new Hashing();
         try {
             ls.logInCheck(e,usernameTextField.getText(), has.hashString(pinTextField.getText()));

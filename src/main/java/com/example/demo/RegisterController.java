@@ -17,25 +17,16 @@ public class RegisterController {
         } catch (IOException ex) {
             throw new RuntimeException(ex+"Adding user to database failed !");
         }
-        try {
-            sceneLoader.loadScene(e,"SuccessfullRegistration.fxml");
-        } catch (IOException ex) {
-            throw new RuntimeException(ex+"Loading SuccessfullRegistration.fxml failed !");
-        }
     }
-    static String choiceOFaccountController;
-//    public enum choiceOfAccountENUM{
-//        CREDITCARD,
-//        DEBITCARD,
-//        SAVINGSACCOUNT,
-//    }
+    static ChoiceOfAccount choiceOFaccountController;
+
     public void SetChooseAccountCreditCard(ActionEvent e) throws IOException {
-        choiceOFaccountController = "credit_card";
+        choiceOFaccountController = ChoiceOfAccount.CREDIT_CARD;
     }
     public void SetChooseAccountDebitCard(ActionEvent e) throws IOException {
-        choiceOFaccountController = "debit_card";
+        choiceOFaccountController = ChoiceOfAccount.DEBIT_CARD;
     }
     public void SetChooseAccountSavingsAccount(ActionEvent e) throws IOException {
-        choiceOFaccountController = "savings_account";
+        choiceOFaccountController = ChoiceOfAccount.SAVINGS_ACCOUNT;
     }
 }

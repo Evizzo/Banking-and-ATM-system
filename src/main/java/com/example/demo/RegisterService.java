@@ -18,7 +18,7 @@ public class RegisterService {
     ConnectToDatabase ctdb = new ConnectToDatabase();
     PrintSqlException pseObject = new PrintSqlException();
 
-    public void addUserToDatabase(String username, String accountID, String accountType,ActionEvent e) throws IOException, RuntimeException{
+    public void addUserToDatabase(String username, String accountID, ChoiceOfAccount accountType,ActionEvent e) throws IOException, RuntimeException{
         Random random = new Random();
         UUID uuid = UUID.randomUUID();
         Hashing hash = new Hashing();
@@ -45,7 +45,7 @@ public class RegisterService {
             preparedStatement = ctdb.con.prepareStatement(sql);
             preparedStatement.setString(1, uuid.toString());
             preparedStatement.setString(2, accountID);
-            preparedStatement.setString(3, accountType);
+            preparedStatement.setString(3, String.valueOf(accountType));
             preparedStatement.setInt(4, 0);
             addedRows = preparedStatement.executeUpdate();
             if (addedRows == 0){

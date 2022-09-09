@@ -3,6 +3,7 @@ package com.example.demo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.sql.PreparedStatement;
@@ -15,15 +16,18 @@ public class LoginService {
     SceneLoader sceneLoader = new SceneLoader();
     String usernameTextField, pinTextField;
 //    @FXML
-//    Label loginLabel;
+
+    TextField usernameTextField;
+    TextField pinTextField;
+    Label loginLabel;
     public LoginService(){}
-    public LoginService(String usernameTextField, String pinTextField){
+    public LoginService(String usernameTextField, String pinTextField, Label loginLabel, TextField usernameTextField,TextField pinTextField ){
         this.usernameTextField = usernameTextField;
         this.pinTextField = pinTextField;
-//        this.loginLabel = loginLabel;
+        this.loginLabel = loginLabel;
     }
     public ab_accounts abaccounts;
-    public ab_accounts logInCheck(ActionEvent e,String un, String pin) throws IOException {
+    public void logInCheck(ActionEvent e,String un, String pin) throws IOException {
         ab_accounts abaccounts;
         abaccounts = null;
         try{
@@ -45,6 +49,21 @@ public class LoginService {
         catch(SQLException sqe) {
             pseObject.printSQLException(sqe);
             throw new RuntimeException(sqe);
+        }
+
+        try{
+            if(abaccounts != null) {
+                loginLabel.setText("Filled !");
+            }
+            else if(usernameTextField.getText().isEmpty() && pinTextField.getText().isEmpty()) {
+                loginLabel.setText("Please fill in both fields.");
+            }
+            else {
+                loginLabel.setText("Wrong USERNAME or PIN !");
+            }
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
         }
         return abaccounts;
     }

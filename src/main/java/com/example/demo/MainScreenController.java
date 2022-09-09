@@ -20,4 +20,11 @@ public class MainScreenController {
             throw new RuntimeException(ex + "actionForLoginButton METHOD FAILED !");
         }
     }
+    public void actionForAdminButton(ActionEvent e){
+        try {
+            sceneLoader.loadScene(e,"AdminScreen.fxml");
+        } catch (IOException ex) {
+            throw new RuntimeException(ex + "actionForAdminButton METHOD FAILED !");
+        }
+    }
 }

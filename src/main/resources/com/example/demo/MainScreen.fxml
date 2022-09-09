@@ -14,6 +14,6 @@
                 <Font size="36.0" />
             </font>
         </Text>
-        <Button layoutX="112.0" layoutY="276.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="375.0" style="-fx-background-color: orange; -fx-border-color: white;" text="DataBase to CVS (tottaly not a bad idea to put this here.)" />
+        <Button layoutX="112.0" layoutY="276.0" mnemonicParsing="false" onAction="#actionForAdminButton" prefHeight="75.0" prefWidth="375.0" style="-fx-background-color: orange; -fx-border-color: white;" text="Admin page " />
     </children>
 </AnchorPane>
