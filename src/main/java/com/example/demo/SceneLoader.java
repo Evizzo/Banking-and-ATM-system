@@ -8,15 +8,13 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class SceneLoader {
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
     public void loadScene(ActionEvent e,String FxmlFileName) throws IOException {
-        root = FXMLLoader.load(getClass().getResource(FxmlFileName));
-        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-        scene = new Scene(root);
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(FxmlFileName)));
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }

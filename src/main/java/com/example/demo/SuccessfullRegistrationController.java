@@ -1,10 +1,7 @@
 package com.example.demo;
 
 import javafx.fxml.FXML;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
-
 
 public class SuccessfullRegistrationController {
     @FXML
