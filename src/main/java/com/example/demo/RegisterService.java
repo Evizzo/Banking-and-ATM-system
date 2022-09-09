@@ -17,7 +17,7 @@ public class RegisterService {
         UUID uuid = UUID.randomUUID();
         Hashing hash = new Hashing();
         String rnd = String.valueOf(random.nextInt(1000,9999));
-        SuccessfullRegistrationController SuccessfullRegistrationController = new SuccessfullRegistrationController(username,rnd);
+        new SuccessfullRegistrationController(username, rnd);
         rnd = hash.hashString(rnd);
         try{
             ctdb.Connect();
