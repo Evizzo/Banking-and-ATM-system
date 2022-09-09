@@ -23,7 +23,7 @@ public class LoginService {
 //        this.loginLabel = loginLabel;
     }
     public ab_accounts abaccounts;
-    public void logInCheck(ActionEvent e,String un, String pin) throws IOException {
+    public ab_accounts logInCheck(ActionEvent e,String un, String pin) throws IOException {
         ab_accounts abaccounts;
         abaccounts = null;
         try{
@@ -46,26 +46,6 @@ public class LoginService {
             pseObject.printSQLException(sqe);
             throw new RuntimeException(sqe);
         }
-    }
-
-    public String fieldCheck(ActionEvent e){
-//        Hashing has = new Hashing();
-//        UserService userService = new UserService();
-        try{
-            if(abaccounts != null) {
-//                sceneLoader.loadScene(e,"chooseAccountTypeToLogin.fxml");
-                return "Succesfouly filled";
-            }
-            else if(usernameTextField==" " && pinTextField==" ") {
-                return "Please fill in both fields.";
-            }
-            else {
-                return "Wrong USERNAME or PIN !";
-            }
-        }
-        catch (Exception ex){
-            ex.printStackTrace();
-        }
-        return "fieldCheck Method failed";
+        return abaccounts;
     }
 }

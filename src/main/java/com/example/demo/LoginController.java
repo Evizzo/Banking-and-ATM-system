@@ -14,15 +14,16 @@ public class LoginController {
     TextField pinTextField;
     @FXML
     Label loginLabel;
+    SceneLoader sceneLoader = new SceneLoader();
 
-    public void loginButton(ActionEvent e){
+    public void loginButton(ActionEvent e) throws IOException {
         LoginService ls = new LoginService(usernameTextField.getText(),pinTextField.getText());
         Hashing has = new Hashing();
         try {
             ls.logInCheck(e,usernameTextField.getText(), has.hashString(pinTextField.getText()));
+            sceneLoader.loadScene(e,"LoggedIn.fxml");
         } catch (IOException ex) {
             throw new RuntimeException(ex+"LOGIN BUTTON FAILED !");
         }
-        loginLabel.setText(ls.fieldCheck(e));
     }
 }
