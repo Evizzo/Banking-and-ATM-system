@@ -1,5 +1,12 @@
 package com.example.demo;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -12,12 +19,12 @@ public class RegisterService {
     PrintSqlException pseObject = new PrintSqlException();
 
 
-    public void addUserToDatabase(String username, String accountID, String accountType) throws IOException, RuntimeException{
+    public void addUserToDatabase(String username, String accountID, String accountType,ActionEvent e) throws IOException, RuntimeException{
         Random random = new Random();
         UUID uuid = UUID.randomUUID();
         Hashing hash = new Hashing();
         String rnd = String.valueOf(random.nextInt(1000,9999));
-        new SuccessfullRegistrationController(username, rnd);
+        String rndmUnhased = rnd;
         rnd = hash.hashString(rnd);
         try{
             ctdb.Connect();
@@ -47,6 +54,22 @@ public class RegisterService {
             }
             abaccounts.setBalance(0);
             ctdb.Disconnect();
+
+            //ocajnicki pokusaj da radi
+            SuccessfullRegistrationController urc = new SuccessfullRegistrationController();
+             Stage stage;
+             Scene scene;
+             Parent root;
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("SuccessfullRegistration.fxml"));
+            root = loader.load();
+
+            urc = loader.getController();
+            urc.displayName(username,rndmUnhased);
+            stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         }
         catch(SQLException sqe) {
             pseObject.printSQLException(sqe);

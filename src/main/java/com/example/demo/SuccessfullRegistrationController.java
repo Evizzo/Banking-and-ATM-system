@@ -9,19 +9,10 @@ import javafx.stage.Stage;
 public class SuccessfullRegistrationController {
     @FXML
     Label nameLabel;
-    String rnd,username;
-    public SuccessfullRegistrationController(){}
-    public SuccessfullRegistrationController(String username,String rnd){
-        this.username = username;
-        this.rnd = rnd;
-        System.out.println(rnd);
-        System.out.println(username);
-        nameLabel.setText("You have been successfully register " + username + ",\n Your pin is: " + rnd);
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+    public void displayName(String userName, String rnd){
+        nameLabel.setText("You have been successfully register " + userName + ",\n Your pin is: " + rnd);
     }
-//    @FXML
-//    public void initialize() {
-//        System.out.println(rnd);
-//        System.out.println(username);
-//        nameLabel.setText("You have been successfully register " + username + ",\n Your pin is: " + rnd);
-//    }
 }

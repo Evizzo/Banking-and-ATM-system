@@ -13,7 +13,7 @@ public class RegisterController {
     private TextField username, accountname;
     public void registerButton(ActionEvent e){
         try {
-            rs.addUserToDatabase(username.getText(),accountname.getText(),choiceOFaccountController);
+            rs.addUserToDatabase(username.getText(),accountname.getText(),choiceOFaccountController,e);
         } catch (IOException ex) {
             throw new RuntimeException(ex+"Adding user to database failed !");
         }
