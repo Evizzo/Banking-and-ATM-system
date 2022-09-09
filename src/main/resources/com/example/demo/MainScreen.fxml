@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.MainScreenController">
+    <children>
+        <Button layoutX="355.0" layoutY="162.0" mnemonicParsing="false" onAction="#actionForRegisterButton" prefHeight="75.0" prefWidth="154.0" style="-fx-background-color: orange; -fx-border-color: white;" text="Register" />
+        <Button layoutX="98.0" layoutY="162.0" mnemonicParsing="false" onAction="#actionForLoginButton" prefHeight="75.0" prefWidth="154.0" style="-fx-background-color: orange; -fx-border-color: white;" text="Login" />
+        <Text layoutX="113.0" layoutY="101.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: orange;" text="ATM BANKING SYSTEM" textAlignment="CENTER">
+            <font>
+                <Font size="36.0" />
+            </font>
+        </Text>
+        <Button layoutX="112.0" layoutY="276.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="375.0" style="-fx-background-color: orange; -fx-border-color: white;" text="DataBase to CVS (tottaly not a bad idea to put this here.)" />
+    </children>
+</AnchorPane>

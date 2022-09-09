@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.RegisterController">
+   <children>
+      <TextField fx:id="username" layoutX="35.0" layoutY="70.0" style="-fx-background-color: orange; -fx-border-color: white;" />
+      <Text layoutX="29.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: orange;" text="Choose Your username">
+         <font>
+            <Font size="16.0" />
+         </font></Text>
+      <Button layoutX="250.0" layoutY="292.0" mnemonicParsing="false" onAction="#registerButton" style="-fx-background-color: orange; -fx-border-color: white;" text="Register">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button layoutX="515.0" layoutY="339.0" mnemonicParsing="false" style="-fx-background-color: orange; -fx-border-color: white;" text="Back">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <TextField fx:id="accountname" layoutX="36.0" layoutY="145.0" style="-fx-background-color: orange; -fx-border-color: white;" />
+      <Text layoutX="14.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: orange;" text="Choose Your account name">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="339.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: orange;" text="Choose Your account type">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Button layoutX="308.0" layoutY="74.0" mnemonicParsing="false" onAction="#SetChooseAccountCreditCard" style="-fx-background-color: orange; -fx-border-color: white;" text="CreditCard">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button layoutX="453.0" layoutY="74.0" mnemonicParsing="false" onAction="#SetChooseAccountDebitCard" style="-fx-background-color: orange; -fx-border-color: white;" text="DebitCard">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button layoutX="366.0" layoutY="135.0" mnemonicParsing="false" onAction="#SetChooseAccountSavingsAccount" style="-fx-background-color: orange; -fx-border-color: white;" text="Savings Account">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
