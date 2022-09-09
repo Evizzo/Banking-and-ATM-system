@@ -18,7 +18,9 @@ public class RegisterService {
     ConnectToDatabase ctdb = new ConnectToDatabase();
     PrintSqlException pseObject = new PrintSqlException();
 
-
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
     public void addUserToDatabase(String username, String accountID, String accountType,ActionEvent e) throws IOException, RuntimeException{
         Random random = new Random();
         UUID uuid = UUID.randomUUID();
@@ -57,9 +59,7 @@ public class RegisterService {
 
             //ocajnicki pokusaj da radi
             SuccessfullRegistrationController urc = new SuccessfullRegistrationController();
-             Stage stage;
-             Scene scene;
-             Parent root;
+
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("SuccessfullRegistration.fxml"));
             root = loader.load();
