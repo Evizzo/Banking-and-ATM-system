@@ -73,5 +73,5 @@ public class RegisterService {
             throw new RuntimeException(sqe);
         }
     }
-    }
+}
 

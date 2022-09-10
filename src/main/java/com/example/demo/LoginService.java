@@ -14,20 +14,19 @@ public class LoginService {
     ConnectToDatabase ctdb = new ConnectToDatabase();
     PrintSqlException pseObject = new PrintSqlException();
     SceneLoader sceneLoader = new SceneLoader();
-    String usernameTextField, pinTextField;
+//    String usernameTextField, pinTextField;
 //    @FXML
 
-    TextField usernameTextField;
-    TextField pinTextField;
-    Label loginLabel;
+
+    String pinTextField;
+    String loginLabel;
     public LoginService(){}
-    public LoginService(String usernameTextField, String pinTextField, Label loginLabel, TextField usernameTextField,TextField pinTextField ){
-        this.usernameTextField = usernameTextField;
+    public LoginService(String pinTextField, String loginLabel){
         this.pinTextField = pinTextField;
         this.loginLabel = loginLabel;
     }
     public ab_accounts abaccounts;
-    public void logInCheck(ActionEvent e,String un, String pin) throws IOException {
+    public ab_accounts logInCheck(ActionEvent e,String un, String pin) throws IOException, SQLException {
         ab_accounts abaccounts;
         abaccounts = null;
         try{
@@ -44,27 +43,15 @@ public class LoginService {
                 abaccounts.setPin(resultSet.getString("pin"));
                 abaccounts.setUsername(resultSet.getString("name"));
             }
+            //System.out.println(abaccounts.getUsername() + abaccounts.getPin());
             ctdb.Disconnect();
+
         }
         catch(SQLException sqe) {
             pseObject.printSQLException(sqe);
             throw new RuntimeException(sqe);
         }
-
-        try{
-            if(abaccounts != null) {
-                loginLabel.setText("Filled !");
-            }
-            else if(usernameTextField.getText().isEmpty() && pinTextField.getText().isEmpty()) {
-                loginLabel.setText("Please fill in both fields.");
-            }
-            else {
-                loginLabel.setText("Wrong USERNAME or PIN !");
-            }
-        }
-        catch (Exception ex){
-            ex.printStackTrace();
-        }
         return abaccounts;
     }
+
 }
