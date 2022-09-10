@@ -1,3 +1,6 @@
+// Neka ga commentoutano, ignorisi :D
+
+
 //package com.example.demo;
 //
 //import java.sql.PreparedStatement;
