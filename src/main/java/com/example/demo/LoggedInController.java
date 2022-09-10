@@ -1,12 +1,16 @@
 package com.example.demo;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import static java.lang.Integer.parseInt;
 
-public class LoggedInController {
+public class LoggedInController implements Initializable {
     @FXML
     Label balanceLabel;
     @FXML
@@ -23,10 +27,6 @@ public class LoggedInController {
         this.choice = choice;
         this.id = id;
     }
-//    public void showSum(){
-//        System.out.println(bs.sumOfBalances());
-//        feedbackLabel.setText("Your overall accounts sum is: " + bs.sumOfBalances());
-//    }
     BalanceServices bs = new BalanceServices(choice,id);
 
     public void balanceCheckButton(){
@@ -82,5 +82,10 @@ public class LoggedInController {
         } catch (Exception es){
             es.printStackTrace();
         }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+          feedbackLabel.setText("Your overall accounts sum is: " + bs.sumOfBalances());
     }
 }
