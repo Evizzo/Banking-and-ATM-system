@@ -28,7 +28,7 @@ public class LoginController {
         }
         if (abaccounts != null){
             new ChooseYourAccountTypeController(usernameTextField.getText(), has.hashString(pinTextField.getText()));
-            sceneLoader.loadScene(e,"LoggedIn.fxml");
+            sceneLoader.loadScene(e,"ChooseAccountID.fxml");
         }
         else if(usernameTextField.getText().isEmpty() && pinTextField.getText().isEmpty()) {
             loginLabel.setText("Please fill in both fields.");
