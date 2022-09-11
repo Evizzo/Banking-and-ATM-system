@@ -1,10 +1,12 @@
 package com.example.demo;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -21,11 +23,13 @@ public class LoggedInController implements Initializable {
     TextField depositInput;
     @FXML
     TextField pinChangeInput;
-    private static String id, choice;
+    private static String id, choice,username,pin;
     public LoggedInController(){}
-    public LoggedInController(String choice, String id){
+    public LoggedInController(String choice, String id, String username,String pin){
         this.choice = choice;
         this.id = id;
+        this.username = username;
+        this.pin = pin;
     }
     BalanceServices bs = new BalanceServices(choice,id);
 
@@ -33,7 +37,6 @@ public class LoggedInController implements Initializable {
 //        System.out.println(id + " - " + choice);
         balanceLabel.setText(String.valueOf(bs.balanceCheck()));
     }
-
     public void withdrawBalanceButton(){  // Jos nisam otkrio kako da setam tekst za labele u non-controller klasama V2.
         try{
             if(withdrawInput.getText().isEmpty()){
@@ -53,7 +56,6 @@ public class LoggedInController implements Initializable {
             es.printStackTrace();
         }
     }
-
     public void depositBalanceButton(){
         try{
             if(depositInput.getText().isEmpty()){
@@ -83,7 +85,11 @@ public class LoggedInController implements Initializable {
             es.printStackTrace();
         }
     }
-
+    public void createNewAccountId(ActionEvent e) throws IOException {
+        NewAccountIdRegisterController nair = new NewAccountIdRegisterController(username,pin,id);
+        SceneLoader sceneLoader = new SceneLoader();
+        sceneLoader.loadScene(e, "RegisterNewAccountId.fxml");
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
           feedbackLabel.setText("Your overall accounts sum is: " + bs.sumOfBalances());

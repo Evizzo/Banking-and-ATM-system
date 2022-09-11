@@ -9,14 +9,19 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Random;
 import java.util.UUID;
 
 public class RegisterService {
-    UserService us = new UserService();
     ConnectToDatabase ctdb = new ConnectToDatabase();
     PrintSqlException pseObject = new PrintSqlException();
+//    private String id;
+//    public RegisterService(){}
+//    public RegisterService(String id){
+//        this.id = id;
+//    }
 
     public void addUserToDatabase(String username, String accountID, ChoiceOfAccount accountType,ActionEvent e) throws IOException, RuntimeException{
         Random random = new Random();
@@ -40,6 +45,7 @@ public class RegisterService {
             abaccounts.setUsername(username);
             abaccounts.setPin(rnd);
             ctdb.Disconnect();
+
             ctdb.Connect();
             sql = "INSERT INTO ab_balances (id,account_id,account_type,ammout) VALUES(?,?,?,?)";
             preparedStatement = ctdb.con.prepareStatement(sql);
@@ -73,5 +79,71 @@ public class RegisterService {
             throw new RuntimeException(sqe);
         }
     }
+
+    public void addExistingUserAccountTypeToDatabase(String username, String rnd, String accountID, ChoiceOfAccount accountType, ActionEvent e, String id) throws IOException, RuntimeException{
+        try{
+            ctdb.Connect();
+            //System.out.println(id);
+            String sql = "SELECT * FROM ab_accounts WHERE id=?";
+            PreparedStatement preparedStatement = ctdb.con.prepareStatement(sql);
+            preparedStatement.setString(1, id);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            ab_accounts abaccounts = new ab_accounts();
+
+            if (resultSet.next()) {
+                abaccounts = new ab_accounts();
+                abaccounts.setPin(resultSet.getString("pin"));
+                abaccounts.setUsername(resultSet.getString("name"));
+            }
+            abaccounts.setUsername(username);
+            abaccounts.setPin(rnd);
+            ctdb.Disconnect();
+
+            ctdb.Connect();
+            sql = "INSERT INTO ab_accounts (id, name, pin) VALUES(?,?,?)";
+            preparedStatement = ctdb.con.prepareStatement(sql);
+            preparedStatement.setString(1,id);
+            preparedStatement.setString(2, abaccounts.getUsername());
+            preparedStatement.setString(3, abaccounts.getPin());
+            int addedRows = preparedStatement.executeUpdate();
+            if (addedRows == 0){
+                throw new RuntimeException("ERROR Added Rows is equal to 0 !");
+            }
+            ctdb.Disconnect();
+
+            ctdb.Connect();
+            sql = "INSERT INTO ab_balances (id,account_id,account_type,ammout) VALUES(?,?,?,?)";
+            preparedStatement = ctdb.con.prepareStatement(sql);
+            preparedStatement.setString(1, id);
+            preparedStatement.setString(2, accountID);
+            preparedStatement.setString(3, String.valueOf(accountType));
+            preparedStatement.setInt(4, 0);
+            addedRows = preparedStatement.executeUpdate();
+            if (addedRows == 0){
+                throw new RuntimeException("ERROR Added Rows is equal to 0 !");
+            }
+            abaccounts.setBalance(0);
+            ctdb.Disconnect();
+
+            new SuccessfullRegistrationController();
+            SuccessfullRegistrationController urc;
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("SuccessfullRegistration.fxml"));
+            Parent root = loader.load();
+
+            urc = loader.getController();
+            urc.displayName("new account " + username,"is still the same");
+            Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
+        catch(SQLException sqe) {
+            pseObject.printSQLException(sqe);
+            throw new RuntimeException(sqe);
+        }
+    }
+
 }
 

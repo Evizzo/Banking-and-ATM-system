@@ -1,9 +1,6 @@
 package com.example.demo;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.sql.PreparedStatement;
@@ -13,10 +10,6 @@ import java.sql.SQLException;
 public class LoginService {
     ConnectToDatabase ctdb = new ConnectToDatabase();
     PrintSqlException pseObject = new PrintSqlException();
-    SceneLoader sceneLoader = new SceneLoader();
-//    String usernameTextField, pinTextField;
-//    @FXML
-
 
     String pinTextField;
     String loginLabel;
@@ -43,7 +36,6 @@ public class LoginService {
                 abaccounts.setPin(resultSet.getString("pin"));
                 abaccounts.setUsername(resultSet.getString("name"));
             }
-            //System.out.println(abaccounts.getUsername() + abaccounts.getPin());
             ctdb.Disconnect();
 
         }

@@ -6,15 +6,23 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
-public class RegisterController {
+public class NewAccountIdRegisterController {
     RegisterService rs = new RegisterService();
+    static String pin,id,username; // OOOOOOOOOOOOPet klasika MORA static da ne bude mi null varijabla, nece bkv da se dodeli u metodi ako nije staticna var...
     @FXML
-    private TextField username, accountname;
+    private TextField accountname;
+    public NewAccountIdRegisterController(){}
+    public NewAccountIdRegisterController(String username, String pin,String id){
+        this.username = username;
+        this.pin = pin;
+        this.id = id;
+    }
     public void registerButton(ActionEvent e){
         try {
-            rs.addUserToDatabase(username.getText(),accountname.getText(),choiceOFaccountController,e);
+
+            rs.addExistingUserAccountTypeToDatabase(username,pin,accountname.getText(),choiceOFaccountController,e,id);
         } catch (IOException ex) {
-            throw new RuntimeException(ex+"Adding user to database failed !");
+            throw new RuntimeException(ex+"Adding NEW user to database failed !");
         }
     }
     static ChoiceOfAccount choiceOFaccountController;
