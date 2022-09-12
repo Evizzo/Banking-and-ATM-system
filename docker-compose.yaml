@@ -1,0 +1,16 @@
+version: '3.3'
+services:
+  db:
+    image: mysql:8
+    environment:
+      MYSQL_DATABASE: 'accs'
+      MYSQL_ROOT_PASSWORD: '163135'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - my-db:/var/lib/mysql
+
+volumes:
+  my-db:
