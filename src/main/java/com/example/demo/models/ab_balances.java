@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.models;
 
 public class ab_balances {
     private int credit_card_balance=1;

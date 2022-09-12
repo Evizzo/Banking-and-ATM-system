@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.models;
 
 public class ab_accounts {
     private String username;

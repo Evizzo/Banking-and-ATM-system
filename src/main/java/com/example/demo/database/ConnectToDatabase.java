@@ -1,4 +1,6 @@
-package com.example.demo;
+package com.example.demo.database;
+
+import com.example.demo.database.PrintSqlException;
 
 import java.sql.*;
 

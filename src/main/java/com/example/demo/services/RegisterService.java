@@ -1,5 +1,10 @@
-package com.example.demo;
+package com.example.demo.services;
 
+import com.example.demo.database.ConnectToDatabase;
+import com.example.demo.database.PrintSqlException;
+import com.example.demo.controllers.SuccessfullRegistrationController;
+import com.example.demo.models.ChoiceOfAccount;
+import com.example.demo.models.ab_accounts;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -23,7 +28,7 @@ public class RegisterService {
 //        this.id = id;
 //    }
 
-    public void addUserToDatabase(String username, String accountID, ChoiceOfAccount accountType,ActionEvent e) throws IOException, RuntimeException{
+    public void addUserToDatabase(String username, String accountID, ChoiceOfAccount accountType, ActionEvent e) throws IOException, RuntimeException{
         Random random = new Random();
         UUID uuid = UUID.randomUUID();
         Hashing hash = new Hashing();

@@ -1,4 +1,7 @@
-package com.example.demo;
+package com.example.demo.services;
+
+import com.example.demo.database.ConnectToDatabase;
+import com.example.demo.database.PrintSqlException;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
