@@ -11,8 +11,9 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class SceneLoader {
-    public void loadScene(ActionEvent e,String FxmlFileName) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(FxmlFileName)));
+    public void loadScene(ActionEvent e, String fxmlFileName) throws IOException {
+        var resource = getClass().getResource("/com/example/demo/" + fxmlFileName);
+        Parent root = FXMLLoader.load(Objects.requireNonNull(resource));
         Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
