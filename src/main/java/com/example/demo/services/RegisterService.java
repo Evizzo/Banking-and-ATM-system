@@ -28,7 +28,7 @@ public class RegisterService {
 //        this.id = id;
 //    }
 
-    public void addUserToDatabase(String username, String accountID, ChoiceOfAccount accountType, ActionEvent e) throws IOException, RuntimeException{
+    public void addUserToDatabase(String username, String accountID, ChoiceOfAccount accountType, ActionEvent e) {
         Random random = new Random();
         UUID uuid = UUID.randomUUID();
         Hashing hash = new Hashing();
@@ -64,20 +64,6 @@ public class RegisterService {
             }
             abaccounts.setBalance(0);
             ctdb.Disconnect();
-
-            //ocajnicki pokusaj da radi
-            new SuccessfullRegistrationController();
-            SuccessfullRegistrationController urc;
-
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("SuccessfullRegistration.fxml"));
-            Parent root = loader.load();
-
-            urc = loader.getController();
-            urc.displayName(username,rndmUnhased);
-            Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
         }
         catch(SQLException sqe) {
             pseObject.printSQLException(sqe);
