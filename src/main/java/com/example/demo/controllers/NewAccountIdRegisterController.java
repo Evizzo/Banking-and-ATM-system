@@ -4,7 +4,12 @@ import com.example.demo.models.ChoiceOfAccount;
 import com.example.demo.services.RegisterService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -21,8 +26,19 @@ public class NewAccountIdRegisterController {
     }
     public void registerButton(ActionEvent e){
         try {
-
             rs.addExistingUserAccountTypeToDatabase(username,pin,accountname.getText(),choiceOFaccountController,e,id);
+            new SuccessfullRegistrationController();
+            SuccessfullRegistrationController urc;
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/SuccessfullRegistration.fxml"));
+            Parent root = loader.load();
+
+            urc = loader.getController();
+            urc.displayName("new account " + username,"is still the same");
+            Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         } catch (IOException ex) {
             throw new RuntimeException(ex+"Adding NEW user to database failed !");
         }

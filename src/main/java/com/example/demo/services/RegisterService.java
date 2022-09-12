@@ -1,16 +1,11 @@
 package com.example.demo.services;
 
+import com.example.demo.controllers.RegisterController;
 import com.example.demo.database.ConnectToDatabase;
 import com.example.demo.database.PrintSqlException;
-import com.example.demo.controllers.SuccessfullRegistrationController;
 import com.example.demo.models.ChoiceOfAccount;
 import com.example.demo.models.ab_accounts;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.PreparedStatement;
@@ -22,12 +17,6 @@ import java.util.UUID;
 public class RegisterService {
     ConnectToDatabase ctdb = new ConnectToDatabase();
     PrintSqlException pseObject = new PrintSqlException();
-//    private String id;
-//    public RegisterService(){}
-//    public RegisterService(String id){
-//        this.id = id;
-//    }
-
     public void addUserToDatabase(String username, String accountID, ChoiceOfAccount accountType, ActionEvent e) {
         Random random = new Random();
         UUID uuid = UUID.randomUUID();
@@ -63,6 +52,7 @@ public class RegisterService {
                 throw new RuntimeException("ERROR Added Rows is equal to 0 !");
             }
             abaccounts.setBalance(0);
+            RegisterController r = new RegisterController(rndmUnhased);
             ctdb.Disconnect();
         }
         catch(SQLException sqe) {
@@ -116,19 +106,6 @@ public class RegisterService {
             }
             abaccounts.setBalance(0);
             ctdb.Disconnect();
-
-            new SuccessfullRegistrationController();
-            SuccessfullRegistrationController urc;
-
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("SuccessfullRegistration.fxml"));
-            Parent root = loader.load();
-
-            urc = loader.getController();
-            urc.displayName("new account " + username,"is still the same");
-            Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
         }
         catch(SQLException sqe) {
             pseObject.printSQLException(sqe);

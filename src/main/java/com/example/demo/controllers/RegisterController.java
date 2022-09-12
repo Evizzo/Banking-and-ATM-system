@@ -12,20 +12,30 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.UUID;
 
 public class RegisterController {
     RegisterService rs = new RegisterService();
     @FXML
     private TextField username, accountname;
+    private static String pin;
+    public RegisterController(){}
+    public RegisterController(String id){
+        this.pin = id;
 
+    }
     public void registerButton(ActionEvent e) throws IOException {
         rs.addUserToDatabase(username.getText(),accountname.getText(),choiceOFaccountController,e);
 
-        // TODO: ovo ne treba da se nalazi u servisu, pa sam nabrzaka stavi ovde
+        new SuccessfullRegistrationController();
+        SuccessfullRegistrationController urc;
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/SuccessfullRegistration.fxml"));
         Parent root = loader.load();
 
-        Stage stage = new Stage();
+        urc = loader.getController();
+        urc.displayName(username.getText(),pin);
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
