@@ -40,12 +40,12 @@ public class BalanceServices {
 
     public void withdrawBalance(int currBal, int withdrawT){
         int forInput = currBal - withdrawT;
-        msq.updateWithThreePreparedStatement("ab_balances","ammout","id","account_id",forInput,id,choice);
+        msq.twoWhereAndThreePreparedStatements("update","ab_balances","ammout","id","account_id",forInput,id,choice);
     }
 
     public void depositBalance(int depositT, int currBal) {
         int forInput = depositT + currBal;
-        msq.updateWithThreePreparedStatement("ab_balances","ammout","id","account_id",forInput,id,choice);
+        msq.twoWhereAndThreePreparedStatements("update","ab_balances","ammout","id","account_id",forInput,id,choice);
     }
 
     public String sumOfBalances(){
