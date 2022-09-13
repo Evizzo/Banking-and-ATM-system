@@ -1,6 +1,7 @@
 package com.example.demo.services;
 
 import com.example.demo.database.ConnectToDatabase;
+import com.example.demo.database.MySqlQueries;
 import com.example.demo.database.PrintSqlException;
 
 import java.sql.PreparedStatement;
@@ -11,6 +12,7 @@ public class BalanceServices {
     private String id, choice;
     ConnectToDatabase ctdb = new ConnectToDatabase();
     PrintSqlException pseObject = new PrintSqlException();
+    MySqlQueries msq = new MySqlQueries();
     public BalanceServices(String choice, String id){
         this.choice = choice;
         this.id = id;
@@ -37,40 +39,13 @@ public class BalanceServices {
     }
 
     public void withdrawBalance(int currBal, int withdrawT){
-        try {
-            ctdb.Connect();
-            int forInput = currBal - withdrawT;
-            String sql = "UPDATE ab_balances SET ammout=? WHERE id=? AND account_id=?";
-            PreparedStatement preparedStatement = ctdb.con.prepareStatement(sql);
-            preparedStatement = ctdb.con.prepareStatement(sql);
-            preparedStatement.setInt(1, forInput);
-            preparedStatement.setString(2, id);
-            preparedStatement.setString(3, choice);
-            preparedStatement.executeUpdate();
-            ctdb.Disconnect();
-        } catch(SQLException sqe) {
-            pseObject.printSQLException(sqe);
-            throw new RuntimeException(sqe);
-        }
+        int forInput = currBal - withdrawT;
+        msq.updateWithThreePreparedStatement("ab_balances","ammout","id","account_id",forInput,id,choice);
     }
 
     public void depositBalance(int depositT, int currBal) {
-        try {
-            ctdb.Connect();
-            int forInput = depositT + currBal;
-            String sql = "UPDATE ab_balances SET ammout=? WHERE id=? AND account_id=?";
-            PreparedStatement preparedStatement = ctdb.con.prepareStatement(sql);
-            preparedStatement = ctdb.con.prepareStatement(sql);
-            preparedStatement.setInt(1, forInput);
-            preparedStatement.setString(2, id);
-            preparedStatement.setString(3, choice);
-            preparedStatement.executeUpdate();
-            ctdb.Disconnect();
-        }
-        catch(SQLException sqe) {
-            pseObject.printSQLException(sqe);
-            throw new RuntimeException(sqe);
-        }
+        int forInput = depositT + currBal;
+        msq.updateWithThreePreparedStatement("ab_balances","ammout","id","account_id",forInput,id,choice);
     }
 
     public String sumOfBalances(){
