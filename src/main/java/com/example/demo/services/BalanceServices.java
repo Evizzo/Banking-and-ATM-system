@@ -13,6 +13,8 @@ public class BalanceServices {
     ConnectToDatabase ctdb = new ConnectToDatabase();
     PrintSqlException pseObject = new PrintSqlException();
     MySqlQueries msq = new MySqlQueries();
+
+    // todo: servis treba da ima samo default konstruktor, ovde mu saljes argumenta za metode
     public BalanceServices(String choice, String id){
         this.choice = choice;
         this.id = id;

@@ -1,6 +1,6 @@
 package com.example.demo.models;
 
-public class ab_accounts {
+public class Accounts {
     private String username;
     private String pin;
     private int balance;

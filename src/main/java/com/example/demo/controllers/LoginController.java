@@ -1,6 +1,6 @@
 package com.example.demo.controllers;
 
-import com.example.demo.models.ab_accounts;
+import com.example.demo.models.Accounts;
 import com.example.demo.services.Hashing;
 import com.example.demo.services.LoginService;
 import javafx.event.ActionEvent;
@@ -19,7 +19,7 @@ public class LoginController {
     @FXML
     Label loginLabel;
     SceneLoader sceneLoader = new SceneLoader();
-    ab_accounts abaccounts;
+    Accounts abaccounts;
 
     public void loginButton(ActionEvent e) throws SQLException, IOException { // Nisam jos smislio kako da odvojim proveru u LoginSerbice xD
         LoginService ls = new LoginService(usernameTextField.getText(),pinTextField.getText());

@@ -6,12 +6,13 @@ import java.sql.SQLException;
 public class MySqlQueries { // there are mysql queries that repeat
     ConnectToDatabase ctdb = new ConnectToDatabase();
     PrintSqlException pseObject = new PrintSqlException();
+    // TODO: ne radi ovo, pravi prepared statement za svaki. Iako liči da se kod ponavlja, ovo ga samo lazno pojednostavljuje jer radi samo za specijalni slucaj
     public void twoWhereAndThreePreparedStatements(String queri, String table, String set, String firstWhere, String secondWhere, int forInput, String second, String third){
         // Jel mogu ovo nekako da stavim da je nezavisno od toga koliko ima preparedStatementa i nezavisno
         // od kolicine where parametra ?
         try {
             ctdb.Connect();
-            String sql = queri + " " + table + " SET " + set + "=? WHERE " + firstWhere + "=? AND " + secondWhere + "=?";
+            String sql = "UPDATE ab_balances SET ammout=? WHERE id=? AND account_id=?";
             PreparedStatement preparedStatement = ctdb.con.prepareStatement(sql);
             preparedStatement = ctdb.con.prepareStatement(sql);
             preparedStatement.setInt(1, forInput);

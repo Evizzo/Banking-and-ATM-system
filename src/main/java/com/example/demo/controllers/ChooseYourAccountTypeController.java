@@ -11,13 +11,14 @@ public class ChooseYourAccountTypeController {
     @FXML
     TextField accountTypeTxtField;
 
-    static String username,pin; // mora static inace je null u funkciji onContBut...
-    ConnectToDatabase ctdb = new ConnectToDatabase();
+    private final ConnectToDatabase ctdb = new ConnectToDatabase();
+
+    String username, pin;
     public ChooseYourAccountTypeController() {}
-                                        public ChooseYourAccountTypeController(String username, String pin) {
-                                            this.username = username;
-                                            this.pin = pin;
-                                        }
+    public ChooseYourAccountTypeController(String username, String pin) {
+        this.username = username;
+        this.pin = pin;
+    }
     public void onContinoueButton(ActionEvent e) throws IOException {
         System.out.println(accountTypeTxtField.getText() + " " + ctdb.getID(username,pin));
         new LoggedInController(accountTypeTxtField.getText(),ctdb.getID(username,pin),username,pin);

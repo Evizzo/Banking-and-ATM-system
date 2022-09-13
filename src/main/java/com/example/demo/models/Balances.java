@@ -1,6 +1,7 @@
 package com.example.demo.models;
 
-public class ab_balances {
+// todo: ovo ti nije ok
+public class Balances {
     private int credit_card_balance=1;
     private int debit_card_balance=2;
     private int savings_account_balance=3;

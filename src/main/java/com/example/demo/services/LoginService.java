@@ -2,7 +2,7 @@ package com.example.demo.services;
 
 import com.example.demo.database.ConnectToDatabase;
 import com.example.demo.database.PrintSqlException;
-import com.example.demo.models.ab_accounts;
+import com.example.demo.models.Accounts;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;
@@ -17,13 +17,16 @@ public class LoginService {
     String pinTextField;
     String loginLabel;
     public LoginService(){}
+
+    // todo login servisu ne trebaju polja!
     public LoginService(String pinTextField, String loginLabel){
         this.pinTextField = pinTextField;
         this.loginLabel = loginLabel;
     }
-    public ab_accounts abaccounts;
-    public ab_accounts logInCheck(ActionEvent e,String un, String pin) throws IOException, SQLException {
-        ab_accounts abaccounts;
+    public Accounts abaccounts;
+    // todo login servise ne treba ActionEvent
+    public Accounts logInCheck(ActionEvent e, String un, String pin) throws IOException, SQLException {
+        Accounts abaccounts;
         abaccounts = null;
         try{
             ctdb.Connect();
@@ -35,7 +38,7 @@ public class LoginService {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
-                abaccounts = new ab_accounts();
+                abaccounts = new Accounts();
                 abaccounts.setPin(resultSet.getString("pin"));
                 abaccounts.setUsername(resultSet.getString("name"));
             }

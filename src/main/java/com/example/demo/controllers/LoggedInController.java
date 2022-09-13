@@ -24,15 +24,18 @@ public class LoggedInController implements Initializable {
     TextField depositInput;
     @FXML
     TextField pinChangeInput;
-    private static String id, choice,username,pin;
+
+    private String id, choice,username,pin;
     public LoggedInController(){}
-    public LoggedInController(String choice, String id, String username,String pin){
+    public LoggedInController(String choice, String id, String username,String pin) {
         this.choice = choice;
         this.id = id;
         this.username = username;
         this.pin = pin;
     }
-    BalanceServices bs = new BalanceServices(choice,id);
+
+    // TODO: označi sve instance servisa kao private final
+    private final BalanceServices bs = new BalanceServices(choice,id);
 
     public void balanceCheckButton(){
 //        System.out.println(id + " - " + choice);

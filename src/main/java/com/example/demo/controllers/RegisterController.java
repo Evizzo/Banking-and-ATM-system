@@ -16,10 +16,12 @@ import java.util.UUID;
 
 public class RegisterController {
     RegisterService rs = new RegisterService();
+    // todo uvek razdvajaj, retko zajedno!
     @FXML
     private TextField username, accountname;
-    private static String pin;
+    private String pin;
     public RegisterController(){}
+    // todo ne treba
     public RegisterController(String id){
         this.pin = id;
 

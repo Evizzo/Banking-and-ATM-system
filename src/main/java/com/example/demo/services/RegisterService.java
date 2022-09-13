@@ -4,7 +4,7 @@ import com.example.demo.controllers.RegisterController;
 import com.example.demo.database.ConnectToDatabase;
 import com.example.demo.database.PrintSqlException;
 import com.example.demo.models.ChoiceOfAccount;
-import com.example.demo.models.ab_accounts;
+import com.example.demo.models.Accounts;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;
@@ -35,7 +35,7 @@ public class RegisterService {
             if (addedRows == 0){
                 throw new RuntimeException("ERROR Added Rows is equal to 0 !");
             }
-            ab_accounts abaccounts = new ab_accounts();
+            Accounts abaccounts = new Accounts();
             abaccounts.setUsername(username);
             abaccounts.setPin(rnd);
             ctdb.Disconnect();
@@ -70,10 +70,10 @@ public class RegisterService {
             preparedStatement.setString(1, id);
 
             ResultSet resultSet = preparedStatement.executeQuery();
-            ab_accounts abaccounts = new ab_accounts();
+            Accounts abaccounts = new Accounts();
 
             if (resultSet.next()) {
-                abaccounts = new ab_accounts();
+                abaccounts = new Accounts();
                 abaccounts.setPin(resultSet.getString("pin"));
                 abaccounts.setUsername(resultSet.getString("name"));
             }
