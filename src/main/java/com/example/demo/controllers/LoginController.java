@@ -12,28 +12,30 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class LoginController {
+
     @FXML
     TextField usernameTextField;
     @FXML
     TextField pinTextField;
     @FXML
     Label loginLabel;
-    SceneLoader sceneLoader = new SceneLoader();
-    Accounts abaccounts;
 
-    public void loginButton(ActionEvent e) throws SQLException, IOException { // Nisam jos smislio kako da odvojim proveru u LoginSerbice xD
+    public void loginButton(ActionEvent e) { // Nisam jos smislio kako da odvojim proveru u LoginSerbice xD
         LoginService ls = new LoginService(usernameTextField.getText(),pinTextField.getText());
         Hashing has = new Hashing();
+
+        Accounts abaccounts;
         try {
-            abaccounts=ls.logInCheck(e,usernameTextField.getText(), has.hashString(pinTextField.getText()));
+            abaccounts = ls.logInCheck(e,usernameTextField.getText(), has.hashString(pinTextField.getText()));
         } catch (IOException ex) {
             throw new RuntimeException(ex+"LOGIN BUTTON FAILED !");
         }
         if (abaccounts != null){
             new ChooseYourAccountTypeController(usernameTextField.getText(), has.hashString(pinTextField.getText()));
+            SceneLoader sceneLoader = new SceneLoader();
             sceneLoader.loadScene(e,"ChooseAccountID.fxml");
         }
-        else if(usernameTextField.getText().isEmpty() && pinTextField.getText().isEmpty()) {
+        else if (usernameTextField.getText().isEmpty() && pinTextField.getText().isEmpty()) {
             loginLabel.setText("Please fill in both fields.");
         }
         else {

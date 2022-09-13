@@ -8,6 +8,5 @@ public class PrintSqlException {
         System.out.println("SQL state = " + sqe.getSQLState());
         System.out.println("Message = " + sqe.getMessage());
         System.out.println("printTrace /n");
-       // throw new RuntimeException(sqe); //-> missing return statemet iako u funkciji imam, mora van izgleda
     }
 }

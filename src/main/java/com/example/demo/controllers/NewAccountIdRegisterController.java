@@ -24,11 +24,11 @@ public class NewAccountIdRegisterController {
         this.pin = pin;
         this.id = id;
     }
-    public void registerButton(ActionEvent e){
+    public void registerButton(ActionEvent e) {
         try {
             rs.addExistingUserAccountTypeToDatabase(username,pin,accountname.getText(),choiceOFaccountController,e,id);
-            new SuccessfullRegistrationController();
-            SuccessfullRegistrationController urc;
+            new SuccessfulRegistrationController();
+            SuccessfulRegistrationController urc;
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/SuccessfullRegistration.fxml"));
             Parent root = loader.load();

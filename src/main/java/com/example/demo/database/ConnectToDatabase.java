@@ -1,7 +1,9 @@
 package com.example.demo.database;
 
+import com.example.demo.AppException;
 import com.example.demo.database.PrintSqlException;
 
+import java.security.PrivilegedActionException;
 import java.sql.*;
 
 public class ConnectToDatabase {
@@ -10,14 +12,13 @@ public class ConnectToDatabase {
     final String PASSWORD = "163135"; // PK TABLE: ab_accounts - id / name / pin ||| FK TABLE: ab_balances - id / CreditCardBalance / DebitCardBalance / SavingsAccountBalance
     public Connection con;
     public Statement stmt;
-    PrintSqlException pseObject = new PrintSqlException();
     public void Connect(){
         try {
             con = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
             stmt = con.createStatement();
-        } catch(SQLException sqe) {
-            pseObject.printSQLException(sqe);
-            throw new RuntimeException(sqe);
+        } catch(SQLException ex) {
+            // todo zameni svuda NAS exception!
+            throw new AppException(ex);
         }
     }
     public void Disconnect(){
@@ -48,7 +49,7 @@ public class ConnectToDatabase {
             }
             Disconnect();
             return id;
-        }catch(SQLException sqe) {
+        } catch(SQLException sqe) {
             pseObject.printSQLException(sqe);
             throw new RuntimeException(sqe);
         }

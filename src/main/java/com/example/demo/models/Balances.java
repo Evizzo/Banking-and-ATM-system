@@ -1,7 +1,8 @@
 package com.example.demo.models;
 
-// todo: ovo ti nije ok
+// todo: sve sredi.
 public class Balances {
+
     private int credit_card_balance=1;
     private int debit_card_balance=2;
     private int savings_account_balance=3;

@@ -13,6 +13,9 @@ public class Main extends Application {
     }
     @Override
     public void start(Stage stage) throws Exception {
+        // todo: Sve ove prebaci na jedno mesto!
+        // primer: new FxmlScreenLoader().load("ime.fxml");
+
         Parent root = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
         stage.setTitle("Banking and ATM system");
         Image icon = new Image("logoatm.png");

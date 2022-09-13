@@ -3,7 +3,6 @@ package com.example.demo.services;
 import com.example.demo.database.ConnectToDatabase;
 import com.example.demo.database.PrintSqlException;
 import com.example.demo.models.Accounts;
-import javafx.event.ActionEvent;
 
 import java.io.IOException;
 import java.sql.PreparedStatement;
@@ -16,18 +15,16 @@ public class LoginService {
 
     String pinTextField;
     String loginLabel;
-    public LoginService(){}
 
     // todo login servisu ne trebaju polja!
     public LoginService(String pinTextField, String loginLabel){
         this.pinTextField = pinTextField;
         this.loginLabel = loginLabel;
     }
-    public Accounts abaccounts;
+
     // todo login servise ne treba ActionEvent
-    public Accounts logInCheck(ActionEvent e, String un, String pin) throws IOException, SQLException {
-        Accounts abaccounts;
-        abaccounts = null;
+    public Accounts logInCheck(String un, String pin) throws IOException {
+        Accounts abaccounts = null;
         try{
             ctdb.Connect();
             String sql = "SELECT * FROM ab_accounts WHERE name=? AND pin=?";

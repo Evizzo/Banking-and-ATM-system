@@ -5,26 +5,17 @@ import javafx.event.ActionEvent;
 import java.io.IOException;
 
 public class MainScreenController {
-    SceneLoader sceneLoader = new SceneLoader();
-    public void actionForRegisterButton(ActionEvent e){
-        try {
-            sceneLoader.loadScene(e,"Register.fxml");
-        } catch (IOException ex) {
-            throw new RuntimeException(ex + "actionForRegisterButton METHOD FAILED !");
-        }
+
+    public void actionForRegisterButton(ActionEvent e) {
+        SceneLoader sceneLoader = new SceneLoader();
+        sceneLoader.loadRegisterScene();
     }
-    public void actionForLoginButton(ActionEvent e){
-        try {
-            sceneLoader.loadScene(e,"Login.fxml");
-        } catch (IOException ex) {
-            throw new RuntimeException(ex + "actionForLoginButton METHOD FAILED !");
-        }
+    public void actionForLoginButton(ActionEvent e) {
+        SceneLoader sceneLoader = new SceneLoader();
+        sceneLoader.loadScene(e,"Login.fxml");
     }
-    public void actionForAdminButton(ActionEvent e){
-        try {
-            sceneLoader.loadScene(e,"AdminScreen.fxml");
-        } catch (IOException ex) {
-            throw new RuntimeException(ex + "actionForAdminButton METHOD FAILED !");
-        }
+    public void actionForAdminButton(ActionEvent e) {
+        SceneLoader sceneLoader = new SceneLoader();
+        sceneLoader.loadScene(e,"AdminScreen.fxml");
     }
 }

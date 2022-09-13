@@ -15,8 +15,10 @@ import java.util.Random;
 import java.util.UUID;
 
 public class RegisterService {
-    ConnectToDatabase ctdb = new ConnectToDatabase();
-    PrintSqlException pseObject = new PrintSqlException();
+
+    private final ConnectToDatabase ctdb = new ConnectToDatabase();
+    private final PrintSqlException pseObject = new PrintSqlException();
+
     public void addUserToDatabase(String username, String accountID, ChoiceOfAccount accountType, ActionEvent e) {
         Random random = new Random();
         UUID uuid = UUID.randomUUID();

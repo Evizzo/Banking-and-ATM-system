@@ -12,13 +12,16 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.UUID;
 
 public class RegisterController {
-    RegisterService rs = new RegisterService();
+    private final RegisterService rs = new RegisterService();
     // todo uvek razdvajaj, retko zajedno!
+
     @FXML
-    private TextField username, accountname;
+    private TextField username;
+    @FXML
+    private TextField accountname;
+
     private String pin;
     public RegisterController(){}
     // todo ne treba
@@ -29,8 +32,8 @@ public class RegisterController {
     public void registerButton(ActionEvent e) throws IOException {
         rs.addUserToDatabase(username.getText(),accountname.getText(),choiceOFaccountController,e);
 
-        new SuccessfullRegistrationController();
-        SuccessfullRegistrationController urc;
+        new SuccessfulRegistrationController();
+        SuccessfulRegistrationController urc;
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/SuccessfullRegistration.fxml"));
         Parent root = loader.load();
@@ -44,13 +47,13 @@ public class RegisterController {
     }
     static ChoiceOfAccount choiceOFaccountController;
 
-    public void SetChooseAccountCreditCard(ActionEvent e) throws IOException {
+    public void SetChooseAccountCreditCard(ActionEvent e) {
         choiceOFaccountController = ChoiceOfAccount.CREDIT_CARD;
     }
-    public void SetChooseAccountDebitCard(ActionEvent e) throws IOException {
+    public void SetChooseAccountDebitCard(ActionEvent e) {
         choiceOFaccountController = ChoiceOfAccount.DEBIT_CARD;
     }
-    public void SetChooseAccountSavingsAccount(ActionEvent e) throws IOException {
+    public void SetChooseAccountSavingsAccount(ActionEvent e) {
         choiceOFaccountController = ChoiceOfAccount.SAVINGS_ACCOUNT;
     }
 }

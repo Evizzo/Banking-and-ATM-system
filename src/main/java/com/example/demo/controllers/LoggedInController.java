@@ -13,6 +13,7 @@ import java.util.ResourceBundle;
 
 import static java.lang.Integer.parseInt;
 
+// todo bolje ime - AccountController
 public class LoggedInController implements Initializable {
     @FXML
     Label balanceLabel;
@@ -25,30 +26,27 @@ public class LoggedInController implements Initializable {
     @FXML
     TextField pinChangeInput;
 
-    private String id, choice,username,pin;
-    public LoggedInController(){}
-    public LoggedInController(String choice, String id, String username,String pin) {
-        this.choice = choice;
+    private final BalanceServices bs = new BalanceServices();
+
+    private String id, choice, username, pin;
+    public void initData(String id, String choice, String username, String pin) {
         this.id = id;
+        this.choice = choice;
         this.username = username;
         this.pin = pin;
     }
 
-    // TODO: označi sve instance servisa kao private final
-    private final BalanceServices bs = new BalanceServices(choice,id);
-
-    public void balanceCheckButton(){
-//        System.out.println(id + " - " + choice);
-        balanceLabel.setText(String.valueOf(bs.balanceCheck()));
+    public void balanceCheckButton() {
+        balanceLabel.setText(String.valueOf(bs.balanceCheck(choice, id)));
     }
-    public void withdrawBalanceButton(){  // Jos nisam otkrio kako da setam tekst za labele u non-controller klasama V2.
+    public void withdrawBalanceButton() {
         try{
             if(withdrawInput.getText().isEmpty()){
                 feedbackLabel.setText("Field cannot be empty !");
             }
             else {
                 //UNOS
-                if(bs.balanceCheck()>=parseInt(withdrawInput.getText()) && bs.balanceCheck()!=0) {
+                if(bs.balanceCheck() >=parseInt(withdrawInput.getText()) && bs.balanceCheck()!=0) {
                     bs.withdrawBalance(bs.balanceCheck(), parseInt(withdrawInput.getText()));
                     feedbackLabel.setText("You have successfully withdrawn " + withdrawInput.getText() + "$, Your current balance is: " + bs.balanceCheck() + "$");
                 }

@@ -4,6 +4,7 @@ public class Accounts {
     private String username;
     private String pin;
     private int balance;
+
     public String getUsername() {
         return username;
     }
@@ -20,6 +21,7 @@ public class Accounts {
         this.pin = pin;
     }
 
+    // todo sumnjivo je da se ne čita
     public int getBalance() {
         return balance;
     }

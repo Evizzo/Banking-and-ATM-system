@@ -9,18 +9,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class BalanceServices {
-    private String id, choice;
-    ConnectToDatabase ctdb = new ConnectToDatabase();
-    PrintSqlException pseObject = new PrintSqlException();
-    MySqlQueries msq = new MySqlQueries();
 
-    // todo: servis treba da ima samo default konstruktor, ovde mu saljes argumenta za metode
-    public BalanceServices(String choice, String id){
-        this.choice = choice;
-        this.id = id;
-    }
+    private final ConnectToDatabase ctdb = new ConnectToDatabase();
+    private final PrintSqlException pseObject = new PrintSqlException();
+    private final MySqlQueries msq = new MySqlQueries();
 
-    public int balanceCheck(){
+    // todo: salji argumente funkciji umesto da ih setujes u konstruktoru
+    public int balanceCheck(String choice, String id){
         try {
             ctdb.Connect();
             String sql = "SELECT ammout FROM ab_balances WHERE id=? AND account_id=?";
@@ -40,17 +35,17 @@ public class BalanceServices {
         }
     }
 
-    public void withdrawBalance(int currBal, int withdrawT){
+    public void withdrawBalance(int currBal, int withdrawT, String choice, String id){
         int forInput = currBal - withdrawT;
         msq.twoWhereAndThreePreparedStatements("update","ab_balances","ammout","id","account_id",forInput,id,choice);
     }
 
-    public void depositBalance(int depositT, int currBal) {
+    public void depositBalance(int depositT, int currBal, String choice, String id) {
         int forInput = depositT + currBal;
         msq.twoWhereAndThreePreparedStatements("update","ab_balances","ammout","id","account_id",forInput,id,choice);
     }
 
-    public String sumOfBalances(){
+    public String sumOfBalances(String id){
         try {
             ctdb.Connect();
 
@@ -70,7 +65,7 @@ public class BalanceServices {
         }
     }
 
-    public void pinChange(String forInput) {
+    public void pinChange(String forInput, String id) {
         try {
             ctdb.Connect();
             Hashing has = new Hashing();

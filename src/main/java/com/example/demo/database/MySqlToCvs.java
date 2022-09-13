@@ -13,11 +13,12 @@ public class MySqlToCvs {
 
         // todo: ovo samo radi dump jedne tabele i kao tako je ok, ali nam treba izvestaj koji daje sumirano. ideja je da vezbas sql.
         public void export(String table) {
+            // todo koristi ono sto si vec napravio za koneciju sa bazom
             String jdbcURL = "jdbc:mysql://localhost:3306/accs";
             String username = "root";
             String password = "163135";
 
-            String csvFileName = getFileName(table.concat("_Export"));
+            String csvFileName = formatFileName(table.concat("_Export"));
 
             try (Connection connection = DriverManager.getConnection(jdbcURL, username, password)) {
                 // TODO ne korisiti concat kada imas "+"
@@ -44,7 +45,7 @@ public class MySqlToCvs {
                             valueString = "\"" + escapeDoubleQuotes(valueString) + "\"";
                         }
 
-                        // todo ne concat, nikada
+                        // todo: ne concat, nikada
                         line = line.concat(valueString);
 
                         if (i != columnCount) {
@@ -69,7 +70,7 @@ public class MySqlToCvs {
 
         }
 
-        private String getFileName(String baseName) {
+        private String formatFileName(String baseName) {
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
             String dateTimeInfo = dateFormat.format(new Date());
             return baseName.concat(String.format("_%s.csv", dateTimeInfo));
