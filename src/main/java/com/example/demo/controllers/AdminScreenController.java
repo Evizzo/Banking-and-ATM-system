@@ -9,4 +9,8 @@ public class AdminScreenController {
         mySqlToCvs.export("ab_accounts");
         mySqlToCvs.export("ab_balances");
     }
+    public void backButton(ActionEvent e){
+        SceneLoader sceneLoader = new SceneLoader();
+        sceneLoader.loadMainScreen(e);
+    }
 }

@@ -18,7 +18,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="515.0" layoutY="339.0" mnemonicParsing="false" style="-fx-background-color: orange; -fx-border-color: white;" text="Back">
+      <Button layoutX="515.0" layoutY="339.0" mnemonicParsing="false" onAction="#backButton" style="-fx-background-color: orange; -fx-border-color: white;" text="Back">
          <font>
             <Font size="20.0" />
          </font>
@@ -34,17 +34,17 @@
             <Font size="16.0" />
          </font>
       </Text>
-      <Button layoutX="308.0" layoutY="74.0" mnemonicParsing="false" onAction="#SetChooseAccountCreditCard" style="-fx-background-color: orange; -fx-border-color: white;" text="CreditCard">
+      <Button layoutX="308.0" layoutY="74.0" mnemonicParsing="false" onAction="#setChooseAccountCreditCard" style="-fx-background-color: orange; -fx-border-color: white;" text="CreditCard">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="453.0" layoutY="74.0" mnemonicParsing="false" onAction="#SetChooseAccountDebitCard" style="-fx-background-color: orange; -fx-border-color: white;" text="DebitCard">
+      <Button layoutX="453.0" layoutY="74.0" mnemonicParsing="false" onAction="#setChooseAccountDebitCard" style="-fx-background-color: orange; -fx-border-color: white;" text="DebitCard">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="366.0" layoutY="135.0" mnemonicParsing="false" onAction="#SetChooseAccountSavingsAccount" style="-fx-background-color: orange; -fx-border-color: white;" text="Savings Account">
+      <Button layoutX="366.0" layoutY="135.0" mnemonicParsing="false" onAction="#setChooseAccountSavingsAccount" style="-fx-background-color: orange; -fx-border-color: white;" text="Savings Account">
          <font>
             <Font size="20.0" />
          </font>

@@ -1,5 +1,7 @@
 package com.example.demo.database;
 
+import com.example.demo.AppException;
+
 import java.sql.SQLException;
 
 public class PrintSqlException {
@@ -8,5 +10,6 @@ public class PrintSqlException {
         System.out.println("SQL state = " + sqe.getSQLState());
         System.out.println("Message = " + sqe.getMessage());
         System.out.println("printTrace /n");
+        throw new AppException("mysql failed " , sqe);
     }
 }

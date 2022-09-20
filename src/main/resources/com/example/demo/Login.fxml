@@ -24,7 +24,7 @@
             <Font size="21.0" />
          </font>
       </Button>
-      <Button layoutX="512.0" layoutY="338.0" mnemonicParsing="false" style="-fx-background-color: orange; -fx-border-color: white;" text="Back">
+      <Button layoutX="512.0" layoutY="338.0" mnemonicParsing="false" onAction="#backButton" style="-fx-background-color: orange; -fx-border-color: white;" text="Back">
          <font>
             <Font size="21.0" />
          </font>

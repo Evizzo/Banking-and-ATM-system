@@ -54,7 +54,7 @@ public class RegisterService {
                 throw new RuntimeException("ERROR Added Rows is equal to 0 !");
             }
             abaccounts.setBalance(0);
-            RegisterController r = new RegisterController(rndmUnhased);
+
             ctdb.Disconnect();
         }
         catch(SQLException sqe) {

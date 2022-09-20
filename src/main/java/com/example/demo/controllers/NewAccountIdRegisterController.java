@@ -18,27 +18,11 @@ public class NewAccountIdRegisterController {
     static String pin,id,username; // OOOOOOOOOOOOPet klasika MORA static da ne bude mi null varijabla, nece bkv da se dodeli u metodi ako nije staticna var...
     @FXML
     private TextField accountname;
-    public NewAccountIdRegisterController(){}
-    public NewAccountIdRegisterController(String username, String pin,String id){
-        this.username = username;
-        this.pin = pin;
-        this.id = id;
-    }
     public void registerButton(ActionEvent e) {
         try {
             rs.addExistingUserAccountTypeToDatabase(username,pin,accountname.getText(),choiceOFaccountController,e,id);
-            new SuccessfulRegistrationController();
-            SuccessfulRegistrationController urc;
-
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/SuccessfullRegistration.fxml"));
-            Parent root = loader.load();
-
-            urc = loader.getController();
-            urc.displayName("new account " + username,"is still the same");
-            Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+            SceneLoader sceneLoader = new SceneLoader();
+            sceneLoader.loadSuccesfoulyRegistredScene(e,username,pin);
         } catch (IOException ex) {
             throw new RuntimeException(ex+"Adding NEW user to database failed !");
         }

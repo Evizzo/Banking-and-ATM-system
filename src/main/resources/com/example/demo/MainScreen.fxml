@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -9,11 +12,21 @@
     <children>
         <Button layoutX="355.0" layoutY="162.0" mnemonicParsing="false" onAction="#actionForRegisterButton" prefHeight="75.0" prefWidth="154.0" style="-fx-background-color: orange; -fx-border-color: white;" text="Register" />
         <Button layoutX="98.0" layoutY="162.0" mnemonicParsing="false" onAction="#actionForLoginButton" prefHeight="75.0" prefWidth="154.0" style="-fx-background-color: orange; -fx-border-color: white;" text="Login" />
-        <Text layoutX="113.0" layoutY="101.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: orange;" text="ATM BANKING SYSTEM" textAlignment="CENTER">
+        <Text layoutX="113.0" layoutY="128.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: orange;" text="ATM BANKING SYSTEM" textAlignment="CENTER">
             <font>
                 <Font size="36.0" />
             </font>
         </Text>
         <Button layoutX="112.0" layoutY="276.0" mnemonicParsing="false" onAction="#actionForAdminButton" prefHeight="75.0" prefWidth="375.0" style="-fx-background-color: orange; -fx-border-color: white;" text="Admin page " />
+      <ImageView fitHeight="75.0" fitWidth="74.0" layoutX="24.0" layoutY="14.0">
+         <image>
+            <Image url="@../../../btclogo.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="bitcoinValue" layoutX="112.0" layoutY="35.0" style="-fx-background-color: orange;" text="bitcoinValue">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

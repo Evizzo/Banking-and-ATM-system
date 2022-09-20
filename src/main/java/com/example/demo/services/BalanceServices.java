@@ -1,20 +1,17 @@
 package com.example.demo.services;
 
+import com.example.demo.controllers.LoginController;
 import com.example.demo.database.ConnectToDatabase;
-import com.example.demo.database.MySqlQueries;
 import com.example.demo.database.PrintSqlException;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class BalanceServices {
-
+public class BalanceServices extends LoginController {
     private final ConnectToDatabase ctdb = new ConnectToDatabase();
     private final PrintSqlException pseObject = new PrintSqlException();
-    private final MySqlQueries msq = new MySqlQueries();
-
-    // todo: salji argumente funkciji umesto da ih setujes u konstruktoru
+    LoginController lc = new LoginController();
     public int balanceCheck(String choice, String id){
         try {
             ctdb.Connect();
@@ -36,13 +33,40 @@ public class BalanceServices {
     }
 
     public void withdrawBalance(int currBal, int withdrawT, String choice, String id){
-        int forInput = currBal - withdrawT;
-        msq.twoWhereAndThreePreparedStatements("update","ab_balances","ammout","id","account_id",forInput,id,choice);
+        try {
+            ctdb.Connect();
+            int forInput = currBal - withdrawT;
+            String sql = "UPDATE ab_balances SET ammout=? WHERE id=? AND account_id=?";
+            PreparedStatement preparedStatement = ctdb.con.prepareStatement(sql);
+            preparedStatement = ctdb.con.prepareStatement(sql);
+            preparedStatement.setInt(1, forInput);
+            preparedStatement.setString(2, id);
+            preparedStatement.setString(3, choice);
+            preparedStatement.executeUpdate();
+            ctdb.Disconnect();
+        } catch(SQLException sqe) {
+            pseObject.printSQLException(sqe);
+            throw new RuntimeException(sqe);
+        }
     }
 
     public void depositBalance(int depositT, int currBal, String choice, String id) {
-        int forInput = depositT + currBal;
-        msq.twoWhereAndThreePreparedStatements("update","ab_balances","ammout","id","account_id",forInput,id,choice);
+        try {
+            ctdb.Connect();
+            int forInput = depositT + currBal;
+            String sql = "UPDATE ab_balances SET ammout=? WHERE id=? AND account_id=?";
+            PreparedStatement preparedStatement = ctdb.con.prepareStatement(sql);
+            preparedStatement = ctdb.con.prepareStatement(sql);
+            preparedStatement.setInt(1, forInput);
+            preparedStatement.setString(2, id);
+            preparedStatement.setString(3, choice);
+            preparedStatement.executeUpdate();
+            ctdb.Disconnect();
+        }
+        catch(SQLException sqe) {
+            pseObject.printSQLException(sqe);
+            throw new RuntimeException(sqe);
+        }
     }
 
     public String sumOfBalances(String id){

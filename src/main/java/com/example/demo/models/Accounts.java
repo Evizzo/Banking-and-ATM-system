@@ -21,14 +21,7 @@ public class Accounts {
         this.pin = pin;
     }
 
-    // todo sumnjivo je da se ne čita
-    public int getBalance() {
-        return balance;
-    }
-
     public void setBalance(int balance) {
         this.balance = balance;
     }
-
-
 }

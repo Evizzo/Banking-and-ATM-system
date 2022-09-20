@@ -1,5 +1,6 @@
 package com.example.demo.controllers;
 
+import com.example.demo.AppException;
 import com.example.demo.models.Accounts;
 import com.example.demo.services.Hashing;
 import com.example.demo.services.LoginService;
@@ -8,32 +9,31 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-import java.io.IOException;
-import java.sql.SQLException;
-
 public class LoginController {
-
     @FXML
     TextField usernameTextField;
     @FXML
     TextField pinTextField;
     @FXML
     Label loginLabel;
-
-    public void loginButton(ActionEvent e) { // Nisam jos smislio kako da odvojim proveru u LoginSerbice xD
-        LoginService ls = new LoginService(usernameTextField.getText(),pinTextField.getText());
+    public void backButton(ActionEvent e){
+        SceneLoader sceneLoader = new SceneLoader();
+        sceneLoader.loadMainScreen(e);
+    }
+    public Accounts abaccounts;
+    public void loginButton(ActionEvent e) {
+        LoginService ls = new LoginService();
         Hashing has = new Hashing();
-
-        Accounts abaccounts;
         try {
-            abaccounts = ls.logInCheck(e,usernameTextField.getText(), has.hashString(pinTextField.getText()));
-        } catch (IOException ex) {
-            throw new RuntimeException(ex+"LOGIN BUTTON FAILED !");
+            abaccounts = ls.logInCheck(usernameTextField.getText(), has.hashString(pinTextField.getText()));
+            //System.out.println(abaccounts.getPin()+abaccounts.getUsername());
+        }
+        catch (Exception ex) {
+            throw new AppException(" !! LOGIN BUTTON FAILED  !! " , ex) ;
         }
         if (abaccounts != null){
-            new ChooseYourAccountTypeController(usernameTextField.getText(), has.hashString(pinTextField.getText()));
             SceneLoader sceneLoader = new SceneLoader();
-            sceneLoader.loadScene(e,"ChooseAccountID.fxml");
+            sceneLoader.loadChooseAccountIDScene(e);
         }
         else if (usernameTextField.getText().isEmpty() && pinTextField.getText().isEmpty()) {
             loginLabel.setText("Please fill in both fields.");

@@ -17,7 +17,6 @@ public class ConnectToDatabase {
             con = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
             stmt = con.createStatement();
         } catch(SQLException ex) {
-            // todo zameni svuda NAS exception!
             throw new AppException(ex);
         }
     }
@@ -25,14 +24,12 @@ public class ConnectToDatabase {
         try {
             stmt.close();
         } catch(SQLException sqe) {
-            pseObject.printSQLException(sqe);
-            throw new RuntimeException(sqe);
+            throw new AppException(sqe);
         }
         try {
             con.close();
         } catch (SQLException sqe) {
-            pseObject.printSQLException(sqe);
-            throw new RuntimeException(sqe);
+            throw new AppException(sqe);
         }
     }
     public String getID(String nick, String pin){
@@ -50,8 +47,7 @@ public class ConnectToDatabase {
             Disconnect();
             return id;
         } catch(SQLException sqe) {
-            pseObject.printSQLException(sqe);
-            throw new RuntimeException(sqe);
+            throw new AppException(sqe);
         }
     }
 }

@@ -4,7 +4,6 @@ import com.example.demo.database.PrintSqlException;
 
 import java.sql.SQLException;
 
-// todo KORISTI ovaj exception svuda!
 public class AppException extends RuntimeException {
 
 	public AppException(String message, Throwable cause) {

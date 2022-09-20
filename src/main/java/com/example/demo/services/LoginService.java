@@ -1,35 +1,23 @@
 package com.example.demo.services;
 
+import com.example.demo.AppException;
 import com.example.demo.database.ConnectToDatabase;
 import com.example.demo.database.PrintSqlException;
 import com.example.demo.models.Accounts;
 
-import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class LoginService {
-    ConnectToDatabase ctdb = new ConnectToDatabase();
-    PrintSqlException pseObject = new PrintSqlException();
-
-    String pinTextField;
-    String loginLabel;
-
-    // todo login servisu ne trebaju polja!
-    public LoginService(String pinTextField, String loginLabel){
-        this.pinTextField = pinTextField;
-        this.loginLabel = loginLabel;
-    }
-
-    // todo login servise ne treba ActionEvent
-    public Accounts logInCheck(String un, String pin) throws IOException {
+public class LoginService{
+    private final ConnectToDatabase ctdb = new ConnectToDatabase();
+    public Accounts logInCheck(String username, String pin) {
         Accounts abaccounts = null;
         try{
             ctdb.Connect();
             String sql = "SELECT * FROM ab_accounts WHERE name=? AND pin=?";
             PreparedStatement preparedStatement = ctdb.con.prepareStatement(sql);
-            preparedStatement.setString(1, un);
+            preparedStatement.setString(1, username);
             preparedStatement.setString(2, pin);
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -40,11 +28,9 @@ public class LoginService {
                 abaccounts.setUsername(resultSet.getString("name"));
             }
             ctdb.Disconnect();
-
         }
         catch(SQLException sqe) {
-            pseObject.printSQLException(sqe);
-            throw new RuntimeException(sqe);
+            throw new AppException(sqe);
         }
         return abaccounts;
     }
