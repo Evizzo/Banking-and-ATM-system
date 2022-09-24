@@ -65,11 +65,11 @@ public class SceneLoader {
         stage.setScene(scene);
         stage.show();
     }
-    public void loadChooseAccountIDScene(ActionEvent e){
-        loadScene(e,"ChooseAccountID.fxml");
+    public ChooseYourAccountTypeController loadChooseAccountIDScene(ActionEvent e){
+        return loadScene(e,"ChooseAccountID.fxml");
     }
-    public void loadCreateNewAccountIdScene(ActionEvent e){
-        loadScene(e, "RegisterNewAccountId.fxml");
+    public NewAccountIdRegisterController loadCreateNewAccountIdScene(ActionEvent e){
+        return loadScene(e, "RegisterNewAccountId.fxml");
     }
     public AccountController loadAccountScreenScene(ActionEvent e) {
         return loadScene(e,"AccountScreen.fxml");

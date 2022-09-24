@@ -12,7 +12,7 @@ import java.util.ResourceBundle;
 
 import static java.lang.Integer.parseInt;
 
-public class AccountController implements Initializable {
+public class AccountController {
     @FXML
     Label balanceLabel;
     @FXML
@@ -25,17 +25,17 @@ public class AccountController implements Initializable {
     TextField pinChangeInput;
 
     private final BalanceServices bs = new BalanceServices();
-    private String id, choice, username, pin;
-    public void initData(String id, String choice, String username, String pin) {
+    private String id, choice,pin,username;
+    public void initData(String id, String choice,String pin,String username) {
         this.id = id;
         this.choice = choice;
-        this.username = username;
         this.pin = pin;
-        // todo: uradi inicijalizaciju ekrana ovde
+        this.username = username;
+        feedbackLabel.setText("Your overall accounts sum is: " + bs.sumOfBalances(id));
     }
-
     public void balanceCheckButton() {
         balanceLabel.setText(String.valueOf(bs.balanceCheck(choice, id)));
+        feedbackLabel.setText("Your balnce has been showen.");
     }
     public void withdrawBalanceButton() {
 
@@ -87,16 +87,12 @@ public class AccountController implements Initializable {
         }
     }
     public void createNewAccountId(ActionEvent e){
-        NewAccountIdRegisterController nair = new NewAccountIdRegisterController();
         SceneLoader sceneLoader = new SceneLoader();
-        sceneLoader.loadCreateNewAccountIdScene(e);
+        NewAccountIdRegisterController newAccountIdRegisterController = sceneLoader.loadCreateNewAccountIdScene(e);
+        newAccountIdRegisterController.initData(id,pin,username);
     }
     public void logOutButton(ActionEvent e){
         SceneLoader sceneLoader = new SceneLoader();
         sceneLoader.loadLogOutButton(e);
-    }
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        feedbackLabel.setText("Your overall accounts sum is: " + bs.sumOfBalances(id));
     }
 }

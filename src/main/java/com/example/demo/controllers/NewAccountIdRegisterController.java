@@ -15,9 +15,16 @@ import java.io.IOException;
 
 public class NewAccountIdRegisterController {
     RegisterService rs = new RegisterService();
-    static String pin,id,username; // OOOOOOOOOOOOPet klasika MORA static da ne bude mi null varijabla, nece bkv da se dodeli u metodi ako nije staticna var...
+    private String pin,id,username; // OOOOOOOOOOOOPet klasika MORA static da ne bude mi null varijabla, nece bkv da se dodeli u metodi ako nije staticna var...
     @FXML
     private TextField accountname;
+
+    public void initData(String id, String pin,String username) {
+        this.id = id;
+        this.pin = pin;
+        this.username = username;
+    }
+
     public void registerButton(ActionEvent e) {
         try {
             rs.addExistingUserAccountTypeToDatabase(username,pin,accountname.getText(),choiceOFaccountController,e,id);

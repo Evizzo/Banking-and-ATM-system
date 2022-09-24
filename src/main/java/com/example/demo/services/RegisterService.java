@@ -19,7 +19,7 @@ public class RegisterService {
     private final ConnectToDatabase ctdb = new ConnectToDatabase();
     private final PrintSqlException pseObject = new PrintSqlException();
 
-    public void addUserToDatabase(String username, String accountID, ChoiceOfAccount accountType, ActionEvent e) {
+    public String addUserToDatabase(String username, String accountID, ChoiceOfAccount accountType, ActionEvent e) {
         Random random = new Random();
         UUID uuid = UUID.randomUUID();
         Hashing hash = new Hashing();
@@ -61,6 +61,7 @@ public class RegisterService {
             pseObject.printSQLException(sqe);
             throw new RuntimeException(sqe);
         }
+        return rndmUnhased;
     }
 
     public void addExistingUserAccountTypeToDatabase(String username, String rnd, String accountID, ChoiceOfAccount accountType, ActionEvent e, String id) throws IOException, RuntimeException{

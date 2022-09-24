@@ -11,7 +11,6 @@ import java.sql.SQLException;
 public class BalanceServices extends LoginController {
     private final ConnectToDatabase ctdb = new ConnectToDatabase();
     private final PrintSqlException pseObject = new PrintSqlException();
-    LoginController lc = new LoginController();
     public int balanceCheck(String choice, String id){
         try {
             ctdb.Connect();

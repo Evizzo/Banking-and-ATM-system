@@ -1,6 +1,7 @@
 package com.example.demo.controllers;
 
 import com.example.demo.AppException;
+import com.example.demo.database.ConnectToDatabase;
 import com.example.demo.models.Accounts;
 import com.example.demo.services.Hashing;
 import com.example.demo.services.LoginService;
@@ -26,14 +27,15 @@ public class LoginController {
         Hashing has = new Hashing();
         try {
             abaccounts = ls.logInCheck(usernameTextField.getText(), has.hashString(pinTextField.getText()));
-            //System.out.println(abaccounts.getPin()+abaccounts.getUsername());
         }
         catch (Exception ex) {
             throw new AppException(" !! LOGIN BUTTON FAILED  !! " , ex) ;
         }
         if (abaccounts != null){
             SceneLoader sceneLoader = new SceneLoader();
-            sceneLoader.loadChooseAccountIDScene(e);
+            ChooseYourAccountTypeController chooseYourAccountTypeController = sceneLoader.loadChooseAccountIDScene(e);
+            ConnectToDatabase ctdb = new ConnectToDatabase();
+            chooseYourAccountTypeController.initData(ctdb.getID(usernameTextField.getText(),has.hashString(pinTextField.getText())),usernameTextField.getText(),pinTextField.getText());
         }
         else if (usernameTextField.getText().isEmpty() && pinTextField.getText().isEmpty()) {
             loginLabel.setText("Please fill in both fields.");
