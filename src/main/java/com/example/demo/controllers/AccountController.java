@@ -1,14 +1,11 @@
 package com.example.demo.controllers;
 
-import com.example.demo.database.ConnectToDatabase;
-import com.example.demo.models.Accounts;
 import com.example.demo.services.BalanceServices;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -26,15 +23,17 @@ public class AccountController implements Initializable {
     TextField depositInput;
     @FXML
     TextField pinChangeInput;
+
     private final BalanceServices bs = new BalanceServices();
     private String id, choice, username, pin;
-//    public void initData(String id, String choice, String username, String pin) {
-//        this.id = id;
-//        this.choice = choice;
-//        this.username = username;
-//        this.pin = pin;
-//    }
-    private final ConnectToDatabase ctdb = new ConnectToDatabase();
+    public void initData(String id, String choice, String username, String pin) {
+        this.id = id;
+        this.choice = choice;
+        this.username = username;
+        this.pin = pin;
+        // todo: uradi inicijalizaciju ekrana ovde
+    }
+
     public void balanceCheckButton() {
         balanceLabel.setText(String.valueOf(bs.balanceCheck(choice, id)));
     }
