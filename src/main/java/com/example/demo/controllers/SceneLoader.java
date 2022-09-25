@@ -6,9 +6,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 /**
  * Scene loaders.
@@ -81,17 +83,17 @@ public class SceneLoader {
         loadScene(e,"MainScreen.fxml");
     }
 
-    //public void loadMainScreen(Stage stage){
-//        Parent root = null;
-//        try {
-//            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MainScreen.fxml")));
-//        } catch (IOException e) {
-//            throw new AppException(" loadMainScreen function failed ",e);
-//        }
-//        stage.setTitle("Banking and ATM system");
-//        Image icon = new Image("logoatm.png");
-//        stage.getIcons().add(icon);
-//        stage.setScene(new Scene(root));
-//        stage.show();
-//    }
+    public void loadFirstMainScreen(Stage stage){
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MainScreen.fxml")));
+        } catch (IOException e) {
+            throw new AppException(" loadMainScreen function failed ",e);
+        }
+        stage.setTitle("Banking and ATM system");
+        Image icon = new Image("logoatm.png");
+        stage.getIcons().add(icon);
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
 }

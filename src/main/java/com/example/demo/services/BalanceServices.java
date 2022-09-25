@@ -1,5 +1,6 @@
 package com.example.demo.services;
 
+import com.example.demo.AppException;
 import com.example.demo.controllers.LoginController;
 import com.example.demo.database.ConnectToDatabase;
 import com.example.demo.database.PrintSqlException;
@@ -27,7 +28,7 @@ public class BalanceServices extends LoginController {
             return currBal;
         } catch (SQLException sqe) {
             pseObject.printSQLException(sqe);
-            throw new RuntimeException(sqe);
+            throw new AppException(sqe);
         }
     }
 
@@ -45,7 +46,7 @@ public class BalanceServices extends LoginController {
             ctdb.Disconnect();
         } catch(SQLException sqe) {
             pseObject.printSQLException(sqe);
-            throw new RuntimeException(sqe);
+            throw new AppException(sqe);
         }
     }
 
@@ -64,7 +65,7 @@ public class BalanceServices extends LoginController {
         }
         catch(SQLException sqe) {
             pseObject.printSQLException(sqe);
-            throw new RuntimeException(sqe);
+            throw new AppException(sqe);
         }
     }
 
@@ -84,7 +85,7 @@ public class BalanceServices extends LoginController {
             return sum;
         } catch (SQLException sqe) {
             pseObject.printSQLException(sqe);
-            throw new RuntimeException(sqe);
+            throw new AppException(sqe);
         }
     }
 
@@ -101,7 +102,7 @@ public class BalanceServices extends LoginController {
         }
         catch(SQLException sqe) {
             pseObject.printSQLException(sqe);
-            throw new RuntimeException(sqe);
+            throw new AppException(sqe);
         }
     }
 

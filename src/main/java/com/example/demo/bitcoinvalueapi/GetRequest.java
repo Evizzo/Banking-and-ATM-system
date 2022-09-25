@@ -7,7 +7,6 @@ import java.net.http.HttpResponse;
 import com.google.gson.Gson;
 public class GetRequest {
     private CryptoPrice cryptoPrice;
-
     public void get(String api) {
         HttpClient httpClient = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create(api)).build();
@@ -16,13 +15,11 @@ public class GetRequest {
                 thenApply(this::read).
                 join();
     }
-
     public String read(String responseBody) {
         Gson gson = new Gson();
         cryptoPrice = gson. fromJson(responseBody, CryptoPrice.class);
 
         return null;
     }
-
     public CryptoPrice getCryptoPrice() { return cryptoPrice; }
 }

@@ -3,20 +3,26 @@ package com.example.demo.controllers;
 import com.example.demo.bitcoinvalueapi.BitcoinValueService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.stage.Stage;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 
-public class MainScreenController implements Initializable {
+public class MainScreenController {
     @FXML
     Label bitcoinValue;
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public MainScreenController() {
         BitcoinValueService btcVS = new BitcoinValueService();
-        bitcoinValue.setText(btcVS.bitcoinValue()+"€");
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                if(btcVS.bitcoinValue() != null){
+                    System.out.println(btcVS.bitcoinValue());
+                    bitcoinValue.setText(btcVS.bitcoinValue()+"€");
+                }
+            }
+        }, 0, 5000);
     }
     public void actionForRegisterButton(ActionEvent e) {
         SceneLoader sceneLoader = new SceneLoader();

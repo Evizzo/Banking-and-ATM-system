@@ -3,12 +3,8 @@ package com.example.demo.controllers;
 import com.example.demo.services.BalanceServices;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-
-import java.net.URL;
-import java.util.ResourceBundle;
 
 import static java.lang.Integer.parseInt;
 
@@ -23,7 +19,6 @@ public class AccountController {
     TextField depositInput;
     @FXML
     TextField pinChangeInput;
-
     private final BalanceServices bs = new BalanceServices();
     private String id, choice,pin,username;
     public void initData(String id, String choice,String pin,String username) {

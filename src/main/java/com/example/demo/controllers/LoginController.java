@@ -23,8 +23,8 @@ public class LoginController {
     }
     public Accounts abaccounts;
     public void loginButton(ActionEvent e) {
-        LoginService ls = new LoginService();
-        Hashing has = new Hashing();
+        final LoginService ls = new LoginService();
+        final Hashing has = new Hashing();
         try {
             abaccounts = ls.logInCheck(usernameTextField.getText(), has.hashString(pinTextField.getText()));
         }
@@ -34,7 +34,7 @@ public class LoginController {
         if (abaccounts != null){
             SceneLoader sceneLoader = new SceneLoader();
             ChooseYourAccountTypeController chooseYourAccountTypeController = sceneLoader.loadChooseAccountIDScene(e);
-            ConnectToDatabase ctdb = new ConnectToDatabase();
+            final ConnectToDatabase ctdb = new ConnectToDatabase();
             chooseYourAccountTypeController.initData(ctdb.getID(usernameTextField.getText(),has.hashString(pinTextField.getText())),usernameTextField.getText(),pinTextField.getText());
         }
         else if (usernameTextField.getText().isEmpty() && pinTextField.getText().isEmpty()) {

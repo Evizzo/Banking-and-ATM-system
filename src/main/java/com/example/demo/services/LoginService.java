@@ -2,7 +2,6 @@ package com.example.demo.services;
 
 import com.example.demo.AppException;
 import com.example.demo.database.ConnectToDatabase;
-import com.example.demo.database.PrintSqlException;
 import com.example.demo.models.Accounts;
 
 import java.sql.PreparedStatement;

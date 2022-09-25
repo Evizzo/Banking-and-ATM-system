@@ -1,5 +1,7 @@
 package com.example.demo.services;
 
+import com.example.demo.AppException;
+
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -14,7 +16,7 @@ public class Hashing {
         }
         catch (NoSuchAlgorithmException e){
             e.printStackTrace();
-            throw new RuntimeException("Hashing failed!", e);
+            throw new AppException("Hashing failed!", e);
         }
     }
 }

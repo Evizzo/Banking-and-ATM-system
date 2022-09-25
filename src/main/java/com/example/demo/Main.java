@@ -1,5 +1,8 @@
 package com.example.demo;
 
+import com.example.demo.controllers.AccountController;
+import com.example.demo.controllers.MainScreenController;
+import com.example.demo.controllers.SceneLoader;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,7 +19,7 @@ public class Main extends Application{
     }
     @Override
     public void start(Stage stage) {
-        // baca error kada pozovem funkc iz SceneLoader.java .............
+//        // baca error (nullpointerexception) kada pozovem funkc iz SceneLoader.java .............
         Parent root = null;
         try {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MainScreen.fxml")));
@@ -29,4 +32,6 @@ public class Main extends Application{
         stage.setScene(new Scene(root));
         stage.show();
     }
+
+
 }

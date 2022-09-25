@@ -1,5 +1,6 @@
 package com.example.demo.services;
 
+import com.example.demo.AppException;
 import com.example.demo.controllers.RegisterController;
 import com.example.demo.database.ConnectToDatabase;
 import com.example.demo.database.PrintSqlException;
@@ -17,7 +18,6 @@ import java.util.UUID;
 public class RegisterService {
 
     private final ConnectToDatabase ctdb = new ConnectToDatabase();
-    private final PrintSqlException pseObject = new PrintSqlException();
 
     public String addUserToDatabase(String username, String accountID, ChoiceOfAccount accountType, ActionEvent e) {
         Random random = new Random();
@@ -58,16 +58,14 @@ public class RegisterService {
             ctdb.Disconnect();
         }
         catch(SQLException sqe) {
-            pseObject.printSQLException(sqe);
-            throw new RuntimeException(sqe);
+            throw new AppException(sqe);
         }
         return rndmUnhased;
     }
 
-    public void addExistingUserAccountTypeToDatabase(String username, String rnd, String accountID, ChoiceOfAccount accountType, ActionEvent e, String id) throws IOException, RuntimeException{
+    public void addExistingUserAccountTypeToDatabase(String username, String rnd, String accountID, ChoiceOfAccount accountType, ActionEvent e, String id) {
         try{
             ctdb.Connect();
-            //System.out.println(id);
             String sql = "SELECT * FROM ab_accounts WHERE id=?";
             PreparedStatement preparedStatement = ctdb.con.prepareStatement(sql);
             preparedStatement.setString(1, id);
@@ -111,8 +109,7 @@ public class RegisterService {
             ctdb.Disconnect();
         }
         catch(SQLException sqe) {
-            pseObject.printSQLException(sqe);
-            throw new RuntimeException(sqe);
+            throw new AppException(sqe);
         }
     }
 

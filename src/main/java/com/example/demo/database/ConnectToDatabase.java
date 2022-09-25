@@ -1,9 +1,7 @@
 package com.example.demo.database;
 
 import com.example.demo.AppException;
-import com.example.demo.database.PrintSqlException;
 
-import java.security.PrivilegedActionException;
 import java.sql.*;
 
 public class ConnectToDatabase {
