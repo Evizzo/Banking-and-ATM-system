@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.bitcoinvalueapi.BitcoinValueService;
 import com.example.demo.controllers.AccountController;
 import com.example.demo.controllers.MainScreenController;
 import com.example.demo.controllers.SceneLoader;
@@ -12,8 +13,11 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Objects;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.Callable;
 
-public class Main extends Application{
+public class Main extends Application implements Callable<String> {
     public static void main(String[] args) {
         launch(args);
     }
@@ -33,5 +37,20 @@ public class Main extends Application{
         stage.show();
     }
 
+    @Override
+    public String call() throws Exception {
+        BitcoinValueService btcVS = new BitcoinValueService();
+        Timer timer = new Timer();
+        String resoult;
+        timer.schedule(new TimerTask() {
+            @Override
+            public String run() {
+                if(btcVS.bitcoinValue() != null){
+                    System.out.println(btcVS.bitcoinValue());
+                    return "aa";
+                }
+            }
+        }, 0, 5000);
 
+    }
 }

@@ -11,19 +11,6 @@ import java.util.TimerTask;
 public class MainScreenController {
     @FXML
     Label bitcoinValue;
-    public MainScreenController() {
-        BitcoinValueService btcVS = new BitcoinValueService();
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                if(btcVS.bitcoinValue() != null){
-                    System.out.println(btcVS.bitcoinValue());
-                    bitcoinValue.setText(btcVS.bitcoinValue()+"€");
-                }
-            }
-        }, 0, 5000);
-    }
     public void actionForRegisterButton(ActionEvent e) {
         SceneLoader sceneLoader = new SceneLoader();
         sceneLoader.loadRegisterScene(e);
