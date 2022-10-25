@@ -16,12 +16,7 @@ public class MainScreenController {
         final BitcoinValueService btcVS = new BitcoinValueService();
         final TimerTask task = new TimerTask() {
             @Override public void run() {
-                Platform.runLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        bitcoinValue.setText(btcVS.bitcoinValue());
-                    }
-                });
+                Platform.runLater(() -> bitcoinValue.setText(btcVS.bitcoinValue()));
             }
         };
         new Timer().schedule(task, 0, 5000);
