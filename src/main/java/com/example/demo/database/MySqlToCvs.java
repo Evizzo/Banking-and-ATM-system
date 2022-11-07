@@ -11,8 +11,6 @@ import java.util.Date;
 public class MySqlToCvs {
     private BufferedWriter fileWriter;
     public void export(String table) {
-        final ConnectToDatabase ctdb = new ConnectToDatabase();
-
         String csvFileName = formatFileName(table+("_Export"));
 
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "password")) {

@@ -11,13 +11,12 @@ public class RegisterController {
     private TextField username;
     @FXML
     private TextField accountname;
-    private String pin;
 
     public void registerButton(ActionEvent e) {
         final RegisterService rs = new RegisterService();
-        pin = rs.addUserToDatabase(username.getText(),accountname.getText(),choiceOFaccountController,e);
+        String pin = rs.addUserToDatabase(username.getText(), accountname.getText(), choiceOFaccountController, e);
         SceneLoader sceneLoader = new SceneLoader();
-        sceneLoader.loadSuccesfoulyRegistredScene(e,username.getText(),pin);
+        sceneLoader.loadSuccesfoulyRegistredScene(e,username.getText(), pin);
     }
     static ChoiceOfAccount choiceOFaccountController;
 
