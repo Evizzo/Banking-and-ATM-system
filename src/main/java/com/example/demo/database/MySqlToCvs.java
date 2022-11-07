@@ -15,7 +15,7 @@ public class MySqlToCvs {
 
         String csvFileName = formatFileName(table+("_Export"));
 
-        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/accs", "root", "163135")) {
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "password")) {
             String sql = "SELECT * FROM " + table;
 
             Statement statement = connection.createStatement();
@@ -70,12 +70,10 @@ public class MySqlToCvs {
     }
 
     private int writeHeaderLine(ResultSet result) throws SQLException, IOException {
-        // write header line containing column names
         ResultSetMetaData metaData = result.getMetaData();
         int numberOfColumns = metaData.getColumnCount();
         String headerLine = "";
 
-        // exclude the first column which is the ID field
         for (int i = 2; i <= numberOfColumns; i++) {
             String columnName = metaData.getColumnName(i);
             headerLine = headerLine + (columnName) + (",");

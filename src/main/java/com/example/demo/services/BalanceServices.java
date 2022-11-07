@@ -55,7 +55,7 @@ public class BalanceServices extends LoginController {
             ctdb.Connect();
             int forInput = depositT + currBal;
             String sql = "UPDATE ab_balances SET ammout=? WHERE id=? AND account_id=?";
-            PreparedStatement preparedStatement = ctdb.con.prepareStatement(sql);
+            PreparedStatement preparedStatement;
             preparedStatement = ctdb.con.prepareStatement(sql);
             preparedStatement.setInt(1, forInput);
             preparedStatement.setString(2, id);

@@ -12,16 +12,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-/**
- * Scene loaders.
- */
 public class SceneLoader {
 
     private static final String RESOURCE_PATH = "/com/example/demo/";
-
-    /**
-     * Loads a scene and returns its controller for initialization.
-     */
     private <T> T loadScene(ActionEvent e, String fxmlFileName) {
         var resource = getClass().getResource(RESOURCE_PATH + fxmlFileName);
         FXMLLoader fxmlLoader = new FXMLLoader(resource);

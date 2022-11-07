@@ -1,0 +1,3 @@
+id,account_id,account_type,ammout
+"8a5a4695-a4c1-417f-9aed-0cb74e5739c6","Kreditna Kartica","CREDIT_CARD",100
+"8a5a4695-a4c1-417f-9aed-0cb74e5739c6","Debitna Kartica","DEBIT_CARD",0

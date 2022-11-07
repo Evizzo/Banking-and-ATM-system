@@ -1,14 +1,11 @@
 package com.example.demo.services;
 
 import com.example.demo.AppException;
-import com.example.demo.controllers.RegisterController;
 import com.example.demo.database.ConnectToDatabase;
-import com.example.demo.database.PrintSqlException;
 import com.example.demo.models.ChoiceOfAccount;
 import com.example.demo.models.Accounts;
 import javafx.event.ActionEvent;
 
-import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,7 +13,6 @@ import java.util.Random;
 import java.util.UUID;
 
 public class RegisterService {
-
     private final ConnectToDatabase ctdb = new ConnectToDatabase();
 
     public String addUserToDatabase(String username, String accountID, ChoiceOfAccount accountType, ActionEvent e) {
@@ -81,13 +77,13 @@ public class RegisterService {
             abaccounts.setUsername(username);
             abaccounts.setPin(rnd);
             ctdb.Disconnect();
-
+            Hashing hash = new Hashing();
             ctdb.Connect();
             sql = "INSERT INTO ab_accounts (id, name, pin) VALUES(?,?,?)";
             preparedStatement = ctdb.con.prepareStatement(sql);
             preparedStatement.setString(1,id);
             preparedStatement.setString(2, abaccounts.getUsername());
-            preparedStatement.setString(3, abaccounts.getPin());
+            preparedStatement.setString(3, hash.hashString(abaccounts.getPin()));
             int addedRows = preparedStatement.executeUpdate();
             if (addedRows == 0){
                 throw new RuntimeException("ERROR Added Rows is equal to 0 !");

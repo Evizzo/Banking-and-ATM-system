@@ -7,7 +7,7 @@ import java.sql.*;
 public class ConnectToDatabase {
     final String DB_URL = "jdbc:mysql://localhost:3306/sys";
     final String USERNAME = "root";
-    final String PASSWORD = "password"; // PK TABLE: ab_accounts - id / name / pin ||| FK TABLE: ab_balances - id / CreditCardBalance / DebitCardBalance / SavingsAccountBalance
+    final String PASSWORD = "password";
     public Connection con;
     public Statement stmt;
     public void Connect(){

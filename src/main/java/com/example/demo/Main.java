@@ -1,6 +1,5 @@
 package com.example.demo;
 
-import com.example.demo.bitcoinvalueapi.BitcoinValueService;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
