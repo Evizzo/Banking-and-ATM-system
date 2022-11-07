@@ -10,10 +10,7 @@ import java.util.Date;
 
 public class MySqlToCvs {
     private BufferedWriter fileWriter;
-
-    // todo: ovo samo radi dump jedne tabele i kao tako je ok, ali nam treba izvestaj koji daje sumirano. ideja je da vezbas sql.
     public void export(String table) {
-        // todo koristi ono sto si vec napravio za koneciju sa bazom --- baci mi 25 errora kad stavim iz ctdb.con npr
         final ConnectToDatabase ctdb = new ConnectToDatabase();
 
         String csvFileName = formatFileName(table+("_Export"));
