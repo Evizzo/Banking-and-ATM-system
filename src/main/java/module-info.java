@@ -14,8 +14,6 @@ module com.example.demo {
     opens com.example.demo.models to javafx.fxml;
     exports com.example.demo.services;
     opens com.example.demo.services to javafx.fxml;
-    exports com.example.demo.controllers;
-    opens com.example.demo.controllers to javafx.fxml;
     exports com.example.demo.database;
     opens com.example.demo.database to javafx.fxml;
 }
