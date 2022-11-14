@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
+// todo Servis nikada nije thread!
+// todo Sav rad za konekcijama (ctdb) mora da bude u TRANSAKCIJI. Pogledaj transakcije za baze.
 public class AdminServices extends Thread{
     private final ConnectToDatabase ctdb = new ConnectToDatabase();
     private final PrintSqlException pseObject = new PrintSqlException();
@@ -75,8 +77,9 @@ public class AdminServices extends Thread{
         final BalanceServices bs = new BalanceServices();
         final Random rand = new Random();
 
+        // todo najvise paznje ovde u vezi transakcija.
         if (bs.balanceCheck(firstAccountType, firstUuid) > bs.balanceCheck(secondAccountType, secondUuid)){
-
+            // todo ovo su sve potencijalne nove metode
             int randomNumber = rand.nextInt(bs.balanceCheck(firstAccountType, firstUuid));
             bs.withdrawBalance(bs.balanceCheck(firstAccountType, firstUuid), randomNumber, firstAccountType, firstUuid);
 
@@ -84,7 +87,7 @@ public class AdminServices extends Thread{
 
         }
         else{
-
+            // todo gledaj da nemas if/else jer se sve ponavalja, vec samo jedan blok.
             int randomNumber = rand.nextInt(bs.balanceCheck(secondAccountType, secondUuid));
             bs.withdrawBalance(bs.balanceCheck(secondAccountType, secondUuid), randomNumber, secondAccountType, secondUuid);
 
@@ -96,7 +99,7 @@ public class AdminServices extends Thread{
     @Override
     public void run(){
         final Random rand = new Random();
-
+        // todo ovde kreiras 3 nepotrebne liste
         ArrayList<String> shuffledUUIDs = new ArrayList<String>();
         shuffledUUIDs = getAllUUID();
         Collections.shuffle(shuffledUUIDs);

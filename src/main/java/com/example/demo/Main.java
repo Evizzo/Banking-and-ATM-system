@@ -3,6 +3,7 @@ import com.example.demo.services.AdminServices;
 
 import java.util.Scanner;
 public class Main{
+    // todo ubaci BTC u background.
     public static void main(String[] args) {
         while (true) {
             Scanner myObj = new Scanner(System.in);
@@ -23,6 +24,8 @@ public class Main{
                 System.out.println("Set number of transactions: ");
                 int numberOfTransactions = myObj.nextInt();
                 for (int i = 0; i < numberOfTransactions; i++) {
+                    // todo kreira se jedan servise, a ne više njih.
+                    // todo ne startuju se SVI threadovi odjednom, nego koristiti pool
                     AdminServices as = new AdminServices(i);
                     as.start();
                 }
