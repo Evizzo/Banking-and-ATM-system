@@ -1,1 +1,1 @@
-# Banking-and-ATM-system is the project im currently learning java and mysql on.
+# Banking-and-ATM-system is my first project i used to learn java and mysql.
