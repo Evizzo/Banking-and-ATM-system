@@ -1,6 +1,6 @@
-# ** Banking and ATM system **
+# **Banking and ATM system**
 
-** Overview **
+# **Overview**
 
 This project is a Banking and ATM System developed using Java, MySQL, and .fxml files for the frontend. 
 It provides functionalities for user registration, login, account management, transaction processing, 
