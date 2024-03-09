@@ -9,12 +9,12 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controllers.ChooseYourAccountTypeController">
    <children>
-      <Label layoutX="329.0" layoutY="25.0" style="-fx-background-color: orange; -fx-border-color: white;" text="Choose Your account type">
+      <Label layoutX="329.0" layoutY="25.0" style="-fx-background-color: green; -fx-border-color: white;" text="Choose Your account type">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
-      <ListView fx:id="accountTypes" layoutX="14.0" layoutY="186.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: orange;" />
+      <ListView fx:id="accountTypes" layoutX="14.0" layoutY="186.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: green;" />
       <TextField fx:id="accountTypeTxtField" layoutX="377.0" layoutY="71.0" />
       <Button layoutX="432.0" layoutY="119.0" mnemonicParsing="false" onAction="#onContinoueButton" text="Continoue" />
    </children>

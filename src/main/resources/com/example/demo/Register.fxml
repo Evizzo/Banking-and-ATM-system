@@ -8,43 +8,43 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controllers.RegisterController">
    <children>
-      <TextField fx:id="username" layoutX="35.0" layoutY="70.0" style="-fx-background-color: orange; -fx-border-color: white;" />
-      <Text layoutX="29.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: orange;" text="Choose Your username">
+      <TextField fx:id="username" layoutX="35.0" layoutY="70.0" style="-fx-background-color: green; -fx-border-color: white;" />
+      <Text layoutX="29.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: green;" text="Choose Your username">
          <font>
             <Font size="16.0" />
          </font></Text>
-      <Button layoutX="250.0" layoutY="292.0" mnemonicParsing="false" onAction="#registerButton" style="-fx-background-color: orange; -fx-border-color: white;" text="Register">
+      <Button layoutX="250.0" layoutY="292.0" mnemonicParsing="false" onAction="#registerButton" style="-fx-background-color: green; -fx-border-color: white;" text="Register">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="515.0" layoutY="339.0" mnemonicParsing="false" onAction="#backButton" style="-fx-background-color: orange; -fx-border-color: white;" text="Back">
+      <Button layoutX="515.0" layoutY="339.0" mnemonicParsing="false" onAction="#backButton" style="-fx-background-color: green; -fx-border-color: white;" text="Back">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <TextField fx:id="accountname" layoutX="36.0" layoutY="145.0" style="-fx-background-color: orange; -fx-border-color: white;" />
-      <Text layoutX="14.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: orange;" text="Choose Your account name">
+      <TextField fx:id="accountname" layoutX="36.0" layoutY="145.0" style="-fx-background-color: green; -fx-border-color: white;" />
+      <Text layoutX="14.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: green;" text="Choose Your account name">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <Text layoutX="339.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: orange;" text="Choose Your account type">
+      <Text layoutX="339.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: green;" text="Choose Your account type">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <Button layoutX="308.0" layoutY="74.0" mnemonicParsing="false" onAction="#setChooseAccountCreditCard" style="-fx-background-color: orange; -fx-border-color: white;" text="CreditCard">
+      <Button layoutX="308.0" layoutY="74.0" mnemonicParsing="false" onAction="#setChooseAccountCreditCard" style="-fx-background-color: green; -fx-border-color: white;" text="CreditCard">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="453.0" layoutY="74.0" mnemonicParsing="false" onAction="#setChooseAccountDebitCard" style="-fx-background-color: orange; -fx-border-color: white;" text="DebitCard">
+      <Button layoutX="453.0" layoutY="74.0" mnemonicParsing="false" onAction="#setChooseAccountDebitCard" style="-fx-background-color: green; -fx-border-color: white;" text="DebitCard">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="366.0" layoutY="135.0" mnemonicParsing="false" onAction="#setChooseAccountSavingsAccount" style="-fx-background-color: orange; -fx-border-color: white;" text="Savings Account">
+      <Button layoutX="366.0" layoutY="135.0" mnemonicParsing="false" onAction="#setChooseAccountSavingsAccount" style="-fx-background-color: green; -fx-border-color: white;" text="Savings Account">
          <font>
             <Font size="20.0" />
          </font>
